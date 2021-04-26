@@ -1,0 +1,19 @@
+{
+  "name": "graphql-platzi",
+  "version": "1.0.0",
+  "description": "Platzi - Curso Básico de GraphQL",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@own.github.com:cesardramirez/graphql-platzi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "graphql": "^15.5.0"
+  }
+}
