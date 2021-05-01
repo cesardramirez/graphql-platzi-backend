@@ -1,7 +1,8 @@
 'use strict'
 
-const { buildSchema } = require('graphql')
 const express = require('express')
+const expressPlayground = require('graphql-playground-middleware-express').default
+const { buildSchema } = require('graphql')
 const { graphqlHTTP } = require('express-graphql')
 
 const app = express()
@@ -27,12 +28,15 @@ const resolvers = {
 }
 
 // Se ejecutan cada uno de los queries.
-app.use('/api', graphqlHTTP({
+app.use('/graphql', graphqlHTTP({
   schema: schema,
   rootValue: resolvers,
   graphiql: true
 }))
 
+// Se agrega la interfaz gráfica de Playground para GraphQL.
+app.get("/", expressPlayground({ endpoint : "/graphql" }))
+
 app.listen(port, () => {
-  console.log(`Server is listening at http://localhost:${port}/api`)
+  console.log(`Server is listening at http://localhost:${port}/`)
 })
