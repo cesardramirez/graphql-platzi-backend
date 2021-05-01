@@ -1,9 +1,9 @@
 # graphql-platzi
 Platzi - Curso Básico de GraphQL
 
-Creación del proyecto:
+### Listado de comandos
 
-<br>`npm i -g npx`  _Instalar npx de manera global._
+`npm i -g npx`  _Instalar npx de manera global._
 <br>`npx gitignore node`  _Crea el archivo gitignore para proyectos node._
 <br>`npm init -y`  _Inicia el package.json en el proyecto._
 <br>`npm i graphql`  _Añade e instala la dependencia de GraphQL en el proyecto._
@@ -12,5 +12,5 @@ Creación del proyecto:
 
 Ejecutando el proyecto:
 
-<br>`node index.js`
-<br>`npm run dev`
+`node index.js`  _Ejecutar la app._
+<br>`npm run dev`  _Ejecuta el servidor web con el script definido en el package.json_
