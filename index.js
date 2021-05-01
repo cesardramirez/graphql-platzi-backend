@@ -1,8 +1,13 @@
 'use strict'
 
-const { graphql, buildSchema } = require('graphql')
+const { buildSchema } = require('graphql')
+const express = require('express')
+const { graphqlHTTP } = require('express-graphql')
 
-// Definiendo el esquema (queries).
+const app = express()
+const port = process.env.port || 3000
+
+// Definiendo el esquema (con 2 queries).
 const schema = buildSchema(`
   type Query {
       hello: String
@@ -22,14 +27,12 @@ const resolvers = {
 }
 
 // Se ejecutan cada uno de los queries.
-graphql(schema, '{ hello }', resolvers).then(response => {
-    console.log(response)
-})  // Imprime { data: [Object: null prototype] { hello: 'Hello World!' } }
-graphql(schema, '{ gretting }', resolvers).then(response => {
-  console.log(response)
-})  // Imprime { data: [Object: null prototype] { gretting: 'Saludo a todos!' } }
+app.use('/api', graphqlHTTP({
+  schema: schema,
+  rootValue: resolvers,
+  graphiql: true
+}))
 
-// Ejecutar ambos queries con el mismo resolvers.
-graphql(schema, '{ hello, gretting }', resolvers).then(response => {
-  console.log(response)
-}) // Imprime { data: [Object: null prototype] { hello: 'Hola Mundo!', gretting: 'Saludo a todos!' } }
+app.listen(port, () => {
+  console.log(`Server is listening at http://localhost:${port}/api`)
+})
