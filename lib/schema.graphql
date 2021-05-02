@@ -1,4 +1,12 @@
+type Course {
+  _id: ID
+  title: String
+  teacher: String
+  description: String
+  topic: String
+}
+
 type Query {
-  hello: String
-  gretting: String
+  "Devuelve todos los cursos."  # Documentación del Query.
+  courses: [Course]
 }
