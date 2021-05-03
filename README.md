@@ -58,7 +58,7 @@ URLs de acceso:
     }
   }
   ```
-
+- Obtiente un único curso.
   ```graphql
   {
     course(id: "anyid1") {
