@@ -1,0 +1,839 @@
+{
+	"info": {
+		"_postman_id": "0068d3f3-1850-4ac6-b241-76d8e74dcd65",
+		"name": "Platzi - GraphQL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Obtiene todos los cursos.",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "{\n    courses {\n        _id,\n        title,\n        topic\n    }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eg : Obtiene todos los cursos.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n    courses {\n        _id,\n        title,\n        topic\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "337"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"151-Ii85ESNpmcUyL6afNzTwnsjbmo4\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 09 May 2021 20:20:30 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"courses\": [\n            {\n                \"_id\": \"608f89930d04fb1305dbe2ff\",\n                \"title\": \"Mi titulo 1\",\n                \"topic\": \"programacion\"\n            },\n            {\n                \"_id\": \"608f89930d04fb1305dbe300\",\n                \"title\": \"Mi titulo 2\",\n                \"topic\": \"programacion\"\n            },\n            {\n                \"_id\": \"608f89930d04fb1305dbe301\",\n                \"title\": \"Mi titulo 3\",\n                \"topic\": \"programacion\"\n            },\n            {\n                \"_id\": \"60983d5455d9b427067200bb\",\n                \"title\": \"Mi titulo 4\",\n                \"topic\": \"diseño\"\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtiene un único curso.",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "{\n    course(id: \"608f89930d04fb1305dbe300\") {\n        title\n        description\n    }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eg: Obtiene un único curso.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n    course(id: \"608f89930d04fb1305dbe300\") {\n        title\n        description\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "75"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4b-DE+mJbflapqoDTh9rZxBQjm2h20\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 09 May 2021 20:21:58 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"course\": {\n            \"title\": \"Mi titulo 2\",\n            \"description\": \"una descripcion\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Crea un curso.",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n    createCourse(\n        input: {\n            title: \"Curso de ejemplo 4\"\n            description: \"Descripcion 4\"\n            topic: \"diseño\"\n        }\n    ) {\n        _id\n        title\n        description\n    }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eg : Crea un curso.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n    createCourse(\n        input: {\n            title: \"Curso de ejemplo 4\"\n            description: \"Descripcion 4\"\n            topic: \"diseño\"\n        }\n    ) {\n        _id\n        title\n        description\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "119"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"77-/xd/+eRLRn4fOZDnbFrVm39m7zE\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 09 May 2021 20:25:25 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"createCourse\": {\n            \"_id\": \"60984535c20e9d2d233fa1b8\",\n            \"title\": \"Curso de ejemplo 4\",\n            \"description\": \"Descripcion 4\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Edita un curso.",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n    editCourse(id: \"60984535c20e9d2d233fa1b8\", input: { title: \"Mi titulo 4\" }) {\n        _id\n        title\n    }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eg : Edita un curso.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n    editCourse(id: \"60984535c20e9d2d233fa1b8\", input: { title: \"Mi titulo 4\" }) {\n        _id\n        title\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "80"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"50-NhrMncmFtkHqWHOqislX86KWdXw\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 09 May 2021 20:28:13 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"editCourse\": {\n            \"_id\": \"60984535c20e9d2d233fa1b8\",\n            \"title\": \"Mi titulo 4\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Elimina un curso.",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n    deleteCourse(id: \"60984535c20e9d2d233fa1b8\")\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eg : Elimina un curso.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n    deleteCourse(id: \"60984535c20e9d2d233fa1b8\")\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "30"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1e-MSycvFv+JANWFqLNxYjS8enFzak\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 09 May 2021 20:29:26 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"deleteCourse\": true\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtiene todos los estudiantes.",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "{\n    students {\n        _id\n        name\n        email\n    }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eg : Obtiene todos los estudiantes.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n    students {\n        _id\n        name\n        email\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "184"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"b8-bbqwg7525VD8NjnJX1ApePhZGrU\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 09 May 2021 20:53:30 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"students\": [\n            {\n                \"_id\": \"60983293daa09d1dd999d1f7\",\n                \"name\": \"Cesar\",\n                \"email\": \"cesardavid@gmail.com\"\n            },\n            {\n                \"_id\": \"60983f4961f3eb28d34942df\",\n                \"name\": \"Andrea\",\n                \"email\": \"andrea90@gmail.com\"\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtiene un único estudiante.",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "{\n    student(id: \"60983293daa09d1dd999d1f7\") {\n        name\n        email\n    }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eg : Obtiene un único estudiante.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n    student(id: \"60983293daa09d1dd999d1f7\") {\n        name\n        email\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "68"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"44-+qmVPTWZGGqIWRJzn1Xce8Iaj4M\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 09 May 2021 20:33:18 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"student\": {\n            \"name\": \"Cesar\",\n            \"email\": \"cesardavid@gmail.com\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Crea un estudiante.",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n    createStudent(input: { name: \"Cesar\", email: \"cesardavid@gmail.com\" }) {\n        _id\n        name\n        email\n    }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eg : Crea un estudiante.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n    createStudent(input: { name: \"Cesar\", email: \"cesardavid@gmail.com\" }) {\n        _id\n        name\n        email\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "107"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"6b-rcik4Ji53hD6ay1Zjem05WYHHvc\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 09 May 2021 20:50:33 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"createStudent\": {\n            \"_id\": \"60984b19c20e9d2d233fa1b9\",\n            \"name\": \"Cesar\",\n            \"email\": \"cesardavid@gmail.com\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Edita un estudiante.",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n    editStudent(\n        id: \"60983f4961f3eb28d34942df\"\n        input: { email: \"andrea90@gmail.com\" }\n    ) {\n        _id\n        name\n        email\n    }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eg : Edita un estudiante.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n    editStudent(\n        id: \"60983f4961f3eb28d34942df\"\n        input: { email: \"andrea90@gmail.com\" }\n    ) {\n        _id\n        name\n        email\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "104"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"68-4/OjRTemHEQ0W40Y015RSC6hvH4\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 09 May 2021 20:52:26 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"editStudent\": {\n            \"_id\": \"60983f4961f3eb28d34942df\",\n            \"name\": \"Andrea\",\n            \"email\": \"andrea90@gmail.com\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Elimina un estudiante.",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n    deleteStudent(id: \"60984b19c20e9d2d233fa1b9\")\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eg : Elimina un estudiante",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n    deleteStudent(id: \"60984b19c20e9d2d233fa1b9\")\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "31"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1f-hIdF7SXJavAss8DuHZ7bmUfhogw\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 09 May 2021 20:53:14 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"deleteStudent\": true\n    }\n}"
+				}
+			]
+		}
+	]
+}

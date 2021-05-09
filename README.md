@@ -176,7 +176,7 @@ URLs de acceso:
 - Obtiene un único estudiante.
   ```graphql
   {
-    student(id: "60983336daa09d1dd999d1f8") {
+    student(id: "60983293daa09d1dd999d1f7") {
       name
       email
     }
@@ -215,7 +215,7 @@ URLs de acceso:
     }
   }
   ```
-- Editar un curso.
+- Editar un estudiante.
   ```graphql
   mutation {
     editStudent(
