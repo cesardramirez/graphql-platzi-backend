@@ -27,7 +27,7 @@ URLs de acceso:
 
 ### Queries
 
-- Obtiente todos los cursos.
+- Obtiene todos los cursos.
   ```graphql
   {
     courses {
@@ -61,7 +61,7 @@ URLs de acceso:
     }
   }
   ```
-- Obtiente un único curso.
+- Obtiene un único curso.
   ```graphql
   {
     course(id: "608f89930d04fb1305dbe300") {
@@ -84,7 +84,7 @@ URLs de acceso:
 - Crear un curso.
   ```graphql
   mutation {
-    course(
+    createCourse(
       input: {
         title: "Curso de ejemplo 4"
         description: "Descripcion 4"
@@ -105,6 +105,123 @@ URLs de acceso:
         "_id": "6098049757a12e0f8f6ab201",
         "title": "Curso de ejemplo 4",
         "description": "Descripcion 4"
+      }
+    }
+  }
+  ```
+- Editar un curso.
+  ```graphql
+  mutation {
+    editCourse(id: "6098321adaa09d1dd999d1f6", input: { title: "Mi titulo 4" }) {
+      _id
+      title
+    }
+  }
+  ```
+
+  ```json
+  {
+    "data": {
+      "editCourse": {
+        "_id": "6098321adaa09d1dd999d1f6",
+        "title": "Mi titulo 4"
+      }
+    }
+  }
+  ```
+
+- Obtiene todos los estudiantes.
+  ```graphql
+  {
+    students {
+      _id
+      name
+      email
+    }
+  }
+  ```
+
+  ```json
+  {
+    "data": {
+      "students": [
+        {
+          "_id": "60983293daa09d1dd999d1f7",
+          "name": "Cesar",
+          "email": "cesardavid@gmail.com"
+        },
+        {
+          "_id": "60983336daa09d1dd999d1f8",
+          "name": "Andrea",
+          "email": "andreita90@gmail.com"
+        }
+      ]
+    }
+  }
+  ```
+- Obtiene un único estudiante.
+  ```graphql
+  {
+    student(id: "60983336daa09d1dd999d1f8") {
+      name
+      email
+    }
+  }
+  ```
+
+  ```json
+  {
+    "data": {
+      "student": {
+        "name": "Andrea",
+        "email": "andreita90@gmail.com"
+      }
+    }
+  }
+  ```
+- Crear un estudiante.
+  ```graphql
+  mutation {
+    createStudent(input: { name: "Cesar", email: "cesardavid@gmail.com" }) {
+      _id
+      name
+      email
+    }
+  }
+  ```
+
+  ```json
+  {
+    "data": {
+      "createStudent": {
+        "_id": "60983293daa09d1dd999d1f7",
+        "name": "Cesar",
+        "email": "cesardavid@gmail.com"
+      }
+    }
+  }
+  ```
+- Editar un curso.
+  ```graphql
+  mutation {
+    editStudent(
+      id: "60983336daa09d1dd999d1f8"
+      input: { email: "prueba@gmail.com" }
+    ) {
+      _id
+      name
+      email
+    }
+  }
+  ```
+
+  ```json
+  {
+    "data": {
+      "editStudent": {
+        "_id": "60983336daa09d1dd999d1f8",
+        "name": "Andrea",
+        "email": "prueba@gmail.com"
       }
     }
   }
