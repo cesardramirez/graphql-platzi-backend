@@ -129,6 +129,20 @@ URLs de acceso:
     }
   }
   ```
+- Elimina un curso.
+  ```graphql
+  mutation {
+    deleteCourse(id: "6098321adaa09d1dd999d1f6")
+  }
+  ```
+
+  ```json
+  {
+    "data": {
+      "deleteCourse": true
+    }
+  }
+  ```
 
 - Obtiene todos los estudiantes.
   ```graphql
@@ -223,6 +237,20 @@ URLs de acceso:
         "name": "Andrea",
         "email": "prueba@gmail.com"
       }
+    }
+  }
+  ```
+- Elimina un estudiante.
+  ```graphql
+  mutation {
+    deleteStudent(id: "6098321adaa09d1dd999d1f6")
+  }
+  ```
+
+  ```json
+  {
+    "data": {
+      "deleteStudent": true
     }
   }
   ```

@@ -53,8 +53,12 @@ type Mutation {  # Documentación del Mutation.
   createCourse(input: CourseInput!): Course
   "Editar un curso."
   editCourse(id: ID!, input: CourseEditInput): Course
+  "Elimina un curso."
+  deleteCourse(id: ID!): Boolean
   "Crea un estudiante."
   createStudent(input: StudentInput!): Student
   "Editar un estudiante."
   editStudent(id: ID!, input: StudentEditInput): Student
+  "Elimina un estudiante."
+  deleteStudent(id: ID!): Boolean
 }
