@@ -81,3 +81,31 @@ URLs de acceso:
     }
   }
   ```
+- Crear un curso.
+  ```graphql
+  mutation {
+    course(
+      input: {
+        title: "Curso de ejemplo 4"
+        description: "Descripcion 4"
+        topic: "diseño"
+      }
+    ) {
+      _id
+      title
+      description
+    }
+  }
+  ```
+
+  ```json
+  {
+    "data": {
+      "course": {
+        "_id": "6098049757a12e0f8f6ab201",
+        "title": "Curso de ejemplo 4",
+        "description": "Descripcion 4"
+      }
+    }
+  }
+  ```

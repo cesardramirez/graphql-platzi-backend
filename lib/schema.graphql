@@ -6,9 +6,21 @@ type Course {
   topic: String
 }
 
-type Query {
-  "Devuelve todos los cursos."  # Documentación del Query.
+type Query {  # Documentación del Query.
+  "Devuelve todos los cursos."
   courses: [Course]
   "Devuelve un sólo curso."
   course(id: ID!): Course
+}
+
+input CourseInput {
+  title: String!
+  teacher: String
+  description: String!
+  topic: String
+}
+
+type Mutation {  # Documentación del Mutation.
+  "Crea un curso"
+  course(input: CourseInput!): Course
 }
