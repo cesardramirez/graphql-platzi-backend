@@ -6,6 +6,7 @@ Platzi - Curso Básico de GraphQL
 `npm i -g npx`  _Instalar npx de manera global._
 <br>`npx gitignore node`  _Crea el archivo gitignore para proyectos node._
 <br>`npm init -y`  _Inicia el package.json en el proyecto._
+<br>`npm install`  _Generar la carpeta node_modules._
 <br>`npm i graphql`  _Añade e instala la dependencia de GraphQL en el proyecto._
 <br>`npm i express express-graphql`  _Añade e instala la dependencia de GraphQL en el proyecto._
 <br>`npm i nodemon -D`  _Añade e instala la dependencia nodemon (como desarrollo). Al hacer cambios en archivos específicos reinicia el servidor automáticamente._
@@ -24,6 +25,21 @@ Ejecutando el proyecto:
 URLs de acceso:
 - GET (Playground) - http://localhost:3000/
 - POST - [http://localhost:3000/graphql](http://localhost:3000/)
+
+## Bases de Datos - MongoDB
+1. Ingresar al [Cluster](https://cloud.mongodb.com/v2/608f451ac3335838e67c6659#clusters) de MongoDB Cloud. _(Correo de Gmail - Acceso)_
+<br>![](/docs/mongo-cloud/img/01_Cluster_MongoDB_Cloud.png)
+2. Conectarse al Cluster Primario en Robo 3T.
+<br>![](/docs/mongo-cloud/img/02_Robo3T_Connection.png)
+<br>![](/docs/mongo-cloud/img/03_Robo3T_Authentication.png)
+3. Realizar una consulta a una colección.
+<br>![](/docs/mongo-cloud/img/04_Robo3T_Consulta.png)
+5. Ejecutar un Query en el PlayGround de GraphQL.
+<br>![](/docs/mongo-cloud/img/05_PlayGround_GraphQL.png)
+
+## Postman
+> Se pueden ejecutar los servicios también a través de [**Postman**](https://www.postman.com/) por lo cuál se dejan a continuación la colección para su ejecución:
+- [Collection](https://github.com/cesardramirez/graphql-platzi/blob/main/docs/postman/Platzi%20-%20GraphQL.postman_collection.json)
 
 ### Queries
 
@@ -251,6 +267,43 @@ URLs de acceso:
   {
     "data": {
       "deleteStudent": true
+    }
+  }
+  ```
+
+- Asigna un estudiante a un curso.
+  ```graphql
+  mutation {
+    addPeople(
+      courseID: "608f89930d04fb1305dbe2ff"
+      personID: "60983293daa09d1dd999d1f7"
+    ) {
+      _id
+      title
+    }
+  }
+  ```
+
+  ```json
+  {
+    "data": {
+      "courses": [
+        {
+          "_id": "608f89930d04fb1305dbe2ff",
+          "title": "Mi titulo 1",
+          "topic": "programacion"
+        },
+        {
+          "_id": "608f89930d04fb1305dbe300",
+          "title": "Mi titulo 2",
+          "topic": "programacion"
+        },
+        {
+          "_id": "608f89930d04fb1305dbe301",
+          "title": "Mi titulo 3",
+          "topic": "programacion"
+        }
+      ]
     }
   }
   ```
