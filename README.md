@@ -7,9 +7,9 @@ Platzi - Curso Básico de GraphQL
 <br>`npx gitignore node`  _Crea el archivo gitignore para proyectos node._
 <br>`npm init -y`  _Inicia el package.json en el proyecto._
 <br>`npm install`  _Generar la carpeta node_modules._
-<br>`npm i graphql`  _Añade e instala la dependencia de GraphQL en el proyecto._
-<br>`npm i express express-graphql`  _Añade e instala la dependencia de GraphQL en el proyecto._
-<br>`npm i nodemon -D`  _Añade e instala la dependencia nodemon (como desarrollo). Al hacer cambios en archivos específicos reinicia el servidor automáticamente._
+<br>`npm i graphql`  _Agrega e instala la dependencia de GraphQL en el proyecto._
+<br>`npm i express express-graphql`  _Agrega e instala la dependencia de GraphQL en el proyecto._
+<br>`npm i nodemon -D`  _Agrega e instala la dependencia nodemon (como desarrollo). Al hacer cambios en archivos específicos reinicia el servidor automáticamente._
 <br>`npm i graphql-playground-middleware-express`  _Dependencia que maneja una interfaz más amigable para GraphQL._
 <br>`npm i standard`  _Dependencia que revisa el código fuente y realiza correcciones (lint)._
 <br>`npm i graphql-tools`  _Dependencia para utilidades adicionales de GraphQL._
@@ -275,7 +275,7 @@ URLs de acceso:
   ```graphql
   mutation {
     addPeople(
-      courseID: "608f89930d04fb1305dbe2ff"
+      courseID: "60ee342200a30f84ee38faaf"
       personID: "60983293daa09d1dd999d1f7"
     ) {
       _id
@@ -287,21 +287,53 @@ URLs de acceso:
   ```json
   {
     "data": {
+      "addPeople": {
+        "_id": "60ee342200a30f84ee38faaf",
+        "title": "Curso de ejemplo 1"
+      }
+    }
+  }
+  ```
+
+- Obtener los cursos con los estudiantes asociados.
+  ```graphql
+  {
+    courses {
+      _id
+      title
+      topic
+      people {
+        _id
+        name
+        email
+      }
+    }
+  }
+  ```
+
+  ```json
+  {
+    "data": {
       "courses": [
+        { ... },
+        { ... },
+        { ... },
         {
-          "_id": "608f89930d04fb1305dbe2ff",
-          "title": "Mi titulo 1",
-          "topic": "programacion"
-        },
-        {
-          "_id": "608f89930d04fb1305dbe300",
-          "title": "Mi titulo 2",
-          "topic": "programacion"
-        },
-        {
-          "_id": "608f89930d04fb1305dbe301",
-          "title": "Mi titulo 3",
-          "topic": "programacion"
+          "_id": "60ee342200a30f84ee38faaf",
+          "title": "Curso de ejemplo 1",
+          "topic": "programación",
+          "people": [
+            {
+              "_id": "60983293daa09d1dd999d1f7",
+              "name": "Cesar",
+              "email": "cesardavid@gmail.com"
+            },
+            {
+              "_id": "60983f4961f3eb28d34942df",
+              "name": "Andrea",
+              "email": "andrea90@gmail.com"
+            }
+          ]
         }
       ]
     }
