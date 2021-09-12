@@ -339,3 +339,141 @@ URLs de acceso:
     }
   }
   ```
+
+- Realizar diferentes queries en una misma sentencia (por medio de los alias).
+  ```graphql
+  {
+    AllCourses: courses {
+      _id
+      title
+    }
+    aliasCourse1: course(id: "60983d5455d9b427067200bb") {
+      _id
+      title
+      description
+    }
+    aliasCourse2: course(id: "60983d5455d9b427067200bb") {
+      _id
+      description
+      topic
+    }
+  }
+  ```
+
+  ```json
+  {
+    "data": {
+      "AllCourses": [
+        {
+          "_id": "608f89930d04fb1305dbe300",
+          "title": "Mi titulo 2"
+        },
+        {
+          "_id": "608f89930d04fb1305dbe301",
+          "title": "Mi titulo 3"
+        },
+        {
+          "_id": "60983d5455d9b427067200bb",
+          "title": "Mi titulo 4"
+        },
+        {
+          "_id": "60ee342200a30f84ee38faaf",
+          "title": "Mi titulo 1"
+        }
+      ],
+      "course1": {
+        "_id": "60983d5455d9b427067200bb",
+        "title": "Mi titulo 4",
+        "description": "una descripcion"
+      },
+      "course2": {
+        "_id": "60983d5455d9b427067200bb",
+        "description": "una descripcion",
+        "topic": "diseño"
+      }
+    }
+  }
+  ```
+
+- Realizar diferentes queries en una misma sentencia (por medio de los alias).
+  ```graphql
+  {
+    allCourses: courses {
+      ...courseFields
+    }
+    aliasCourse1: course(id: "60983d5455d9b427067200bb") {
+      ...courseFields
+      teacher
+    }
+    aliasCourse2: course(id: "60983d5455d9b427067200bb") {
+      ...courseFields
+      topic
+    }
+  }
+
+  fragment courseFields on Course {
+    _id
+    title
+    description
+    people {
+      _id
+      name
+    }
+  }
+  ```
+
+  ```json
+  {
+    "data": {
+      "allCourses": [
+        {
+          "_id": "608f89930d04fb1305dbe300",
+          "title": "Mi titulo 2",
+          "description": "una descripcion",
+          "people": []
+        },
+        {
+          "_id": "608f89930d04fb1305dbe301",
+          "title": "Mi titulo 3",
+          "description": "una descripcion",
+          "people": []
+        },
+        {
+          "_id": "60983d5455d9b427067200bb",
+          "title": "Mi titulo 4",
+          "description": "una descripcion",
+          "people": []
+        },
+        {
+          "_id": "60ee342200a30f84ee38faaf",
+          "title": "Mi titulo 1",
+          "description": "una descripcion",
+          "people": [
+            {
+              "_id": "60983293daa09d1dd999d1f7",
+              "name": "Cesar"
+            },
+            {
+              "_id": "60983f4961f3eb28d34942df",
+              "name": "Andrea"
+            }
+          ]
+        }
+      ],
+      "aliasCourse1": {
+        "_id": "60983d5455d9b427067200bb",
+        "title": "Mi titulo 4",
+        "description": "una descripcion",
+        "people": [],
+        "teacher": ""
+      },
+      "aliasCourse2": {
+        "_id": "60983d5455d9b427067200bb",
+        "title": "Mi titulo 4",
+        "description": "una descripcion",
+        "people": [],
+        "topic": "diseño"
+      }
+    }
+  }
+  ```
