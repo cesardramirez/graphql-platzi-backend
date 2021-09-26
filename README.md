@@ -6,7 +6,7 @@ Platzi - Curso Básico de GraphQL
 `npm i -g npx`  _Instalar npx de manera global._
 <br>`npx gitignore node`  _Crea el archivo gitignore para proyectos node._
 <br>`npm init -y`  _Inicia el package.json en el proyecto._
-<br>`npm install`  _Generar la carpeta node_modules._
+<br>`npm install`  _Generar la carpeta node_modules (necesario para ejecutar el proyecto)._
 <br>`npm i graphql`  _Agrega e instala la dependencia de GraphQL en el proyecto._
 <br>`npm i express express-graphql`  _Agrega e instala la dependencia de GraphQL en el proyecto._
 <br>`npm i nodemon -D`  _Agrega e instala la dependencia nodemon (como desarrollo). Al hacer cambios en archivos específicos reinicia el servidor automáticamente._
@@ -97,6 +97,51 @@ URLs de acceso:
     }
   }
   ```
+- Obtiene un único curso (por medio de variables y fragmentos).
+  Query
+  ```graphql
+  query infoCourse($course: ID!) {
+    course(id: $course) {
+      ...courseFields
+    }
+  }
+
+  fragment courseFields on Course {
+    _id
+    title
+    description
+    people {
+      _id
+      name
+    }
+  }
+  ```
+
+  Query Variables
+  ```json
+  {
+    "course" : "60983d5455d9b427067200bb"
+  }
+  ```
+
+  Response
+  ```json
+  {
+    "data": {
+      "course": {
+        "_id": "60983d5455d9b427067200bb",
+        "title": "Mi titulo 4",
+        "description": "una descripcion",
+        "people": [
+          {
+            "_id": "60983f4961f3eb28d34942df",
+            "name": "Andrea"
+          }
+        ]
+      }
+    }
+  }
+  ```
 - Crear un curso.
   ```graphql
   mutation {
@@ -121,6 +166,41 @@ URLs de acceso:
         "_id": "6098049757a12e0f8f6ab201",
         "title": "Curso de ejemplo 4",
         "description": "Descripcion 4"
+      }
+    }
+  }
+  ```
+- Crear un curso (por medio de variables).
+  Mutation
+  ```graphql
+  mutation createCourse($input: CourseInput!) {
+    createCourse(input: $input) {
+      _id
+      title
+      description
+    }
+  }
+
+  ```
+  Query Variables
+  ```json
+  {
+    "input": {
+      "title": "Curso de ejemplo 5",
+      "description": "Descripcion 5",
+      "topic": "cultura"
+    }
+  }
+  ```
+
+  Response
+  ```json
+  {
+    "data": {
+      "createCourse": {
+        "_id": "6150f5e2942ceb1b5ce811f9",
+        "title": "Curso de ejemplo 5",
+        "description": "Descripcion 5"
       }
     }
   }
@@ -209,6 +289,35 @@ URLs de acceso:
     }
   }
   ```
+- Obtiene un estudiante (por medio de variables).
+  Query
+  ```graphql
+  query infoStudent($student: ID!) {
+    student(id: $student) {
+      name
+      email
+    }
+  }
+  ```
+
+  Query Variables
+  ```json
+  {
+    "student": "60983293daa09d1dd999d1f7"
+  }
+  ```
+
+  Response
+  ```json
+  {
+    "data": {
+      "student": {
+        "name": "Cesar",
+        "email": "cesardavid@gmail.com"
+      }
+    }
+  }
+  ```
 - Crear un estudiante.
   ```graphql
   mutation {
@@ -270,8 +379,7 @@ URLs de acceso:
     }
   }
   ```
-
-- Asigna un estudiante a un curso.
+- Asigna o agrega un estudiante a un curso.
   ```graphql
   mutation {
     addPeople(
@@ -294,8 +402,37 @@ URLs de acceso:
     }
   }
   ```
+- Asigna o agrega un estudiante a un curso (por medio de variables).
+  Mutation
+  ```graphql
+  mutation addStudentToCurse($course: ID!, $person: ID!) {
+    addPeople(courseID: $course, personID: $person) {
+      _id
+      title
+    }
+  }
+  ```
 
-- Obtener los cursos con los estudiantes asociados.
+  Query Variables
+  ```json
+  {
+    "course": "60983d5455d9b427067200bb",
+    "person": "60983f4961f3eb28d34942df"
+  }
+    ```
+
+  Response
+  ```json
+  {
+    "data": {
+      "addPeople": {
+        "_id": "60983d5455d9b427067200bb",
+        "title": "Mi titulo 4"
+      }
+    }
+  }
+  ```
+- Obtener todos los cursos con los estudiantes asociados.
   ```graphql
   {
     courses {
@@ -339,7 +476,6 @@ URLs de acceso:
     }
   }
   ```
-
 - Realizar diferentes queries en una misma sentencia (por medio de los alias).
   ```graphql
   {
@@ -394,8 +530,7 @@ URLs de acceso:
     }
   }
   ```
-
-- Realizar diferentes queries en una misma sentencia (por medio de los alias).
+- Realizar diferentes queries en una misma sentencia (por medio de los alias y fragmentos).
   ```graphql
   {
     allCourses: courses {
