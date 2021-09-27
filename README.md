@@ -188,7 +188,8 @@ URLs de acceso:
     "input": {
       "title": "Curso de ejemplo 5",
       "description": "Descripcion 5",
-      "topic": "cultura"
+      "topic": "cultura",
+      "level": "principiante"
     }
   }
   ```
@@ -439,6 +440,7 @@ URLs de acceso:
       _id
       title
       topic
+      level
       people {
         _id
         name
@@ -459,6 +461,7 @@ URLs de acceso:
           "_id": "60ee342200a30f84ee38faaf",
           "title": "Curso de ejemplo 1",
           "topic": "programación",
+          "level": "principiante",
           "people": [
             {
               "_id": "60983293daa09d1dd999d1f7",
