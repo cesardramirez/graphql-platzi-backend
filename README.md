@@ -37,6 +37,10 @@ URLs de acceso:
 5. Ejecutar un Query en el PlayGround de GraphQL.
 <br>![](/docs/mongo-cloud/img/05_PlayGround_GraphQL.png)
 
+### Comandos ejecutados
+`db.students.renameCollection("people", false)`  _Renombra la colección students por people._
+<br>`db.courses.updateMany( {}, { $rename: { "teacher": "monitor" } } )`  _Modifica todos los campos que se llaman teacher por monitor en el collection courses._
+
 ## Postman
 > Se pueden ejecutar los servicios también a través de [**Postman**](https://www.postman.com/) por lo cuál se dejan a continuación la colección para su ejecución:
 - [Collection](https://github.com/cesardramirez/graphql-platzi/blob/main/docs/postman/Platzi%20-%20GraphQL.postman_collection.json)
@@ -241,10 +245,10 @@ URLs de acceso:
   }
   ```
 
-- Obtiene todos los estudiantes.
+- Obtiene todas las personas (estudiantes y profesores).
   ```graphql
   {
-    students {
+    people {
       _id
       name
       email
@@ -255,7 +259,7 @@ URLs de acceso:
   ```json
   {
     "data": {
-      "students": [
+      "people": [
         {
           "_id": "60983293daa09d1dd999d1f7",
           "name": "Cesar",
@@ -270,10 +274,59 @@ URLs de acceso:
     }
   }
   ```
-- Obtiene un único estudiante.
+- Obtiene todas las personas (estudiantes y profesores) con los campos propios de cada implementación.
   ```graphql
   {
-    student(id: "60983293daa09d1dd999d1f7") {
+    people {
+      _id
+      name
+      email
+      ... on Teacher {
+        phone
+      }
+      ... on Student {
+        avatar
+      }
+    }
+  }
+  ```
+
+  ```json
+  {
+    "data": {
+      "people": [
+        {
+          "_id": "60983293daa09d1dd999d1f7",
+          "name": "Cesar",
+          "email": "cesardavid@gmail.com",
+          "avatar": null
+        },
+        {
+          "_id": "60983f4961f3eb28d34942df",
+          "name": "Andrea",
+          "email": "andrea90@gmail.com",
+          "avatar": null
+        },
+        {
+          "_id": "615266e6c3540b0c2a3bab18",
+          "name": "Andrés",
+          "email": "andresmate@ucentral.edu.co",
+          "phone": "3156787625"
+        },
+        {
+          "_id": "615275231375ea1046a98ac6",
+          "name": "Eric",
+          "email": "erichacon@itc.edu.co",
+          "phone": "3124763416"
+        }
+      ]
+    }
+  }
+  ```
+- Obtiene una persona (estudiante o profesor).
+  ```graphql
+  {
+    person(id: "60983293daa09d1dd999d1f7") {
       name
       email
     }
@@ -283,18 +336,18 @@ URLs de acceso:
   ```json
   {
     "data": {
-      "student": {
+      "person": {
         "name": "Andrea",
         "email": "andreita90@gmail.com"
       }
     }
   }
   ```
-- Obtiene un estudiante (por medio de variables).
+- Obtiene una persona (por medio de variables).
   Query
   ```graphql
-  query infoStudent($student: ID!) {
-    student(id: $student) {
+  query infoStudent($person: ID!) {
+    person(id: $person) {
       name
       email
     }
@@ -304,7 +357,7 @@ URLs de acceso:
   Query Variables
   ```json
   {
-    "student": "60983293daa09d1dd999d1f7"
+    "person": "60983293daa09d1dd999d1f7"
   }
   ```
 
@@ -312,17 +365,17 @@ URLs de acceso:
   ```json
   {
     "data": {
-      "student": {
+      "person": {
         "name": "Cesar",
         "email": "cesardavid@gmail.com"
       }
     }
   }
   ```
-- Crear un estudiante.
+- Crear una persona.
   ```graphql
   mutation {
-    createStudent(input: { name: "Cesar", email: "cesardavid@gmail.com" }) {
+    createPerson(input: { name: "Cesar", email: "cesardavid@gmail.com" }) {
       _id
       name
       email
@@ -333,7 +386,7 @@ URLs de acceso:
   ```json
   {
     "data": {
-      "createStudent": {
+      "createPerson": {
         "_id": "60983293daa09d1dd999d1f7",
         "name": "Cesar",
         "email": "cesardavid@gmail.com"
@@ -341,10 +394,67 @@ URLs de acceso:
     }
   }
   ```
-- Editar un estudiante.
+- Crea un profesor.
   ```graphql
   mutation {
-    editStudent(
+    createPerson(input: { name: "Andrés", email: "andresmate@ucentral.edu.co", phone: "3156787625" }) {
+      _id
+      name
+      email
+    }
+  }
+  ```
+
+  ```json
+  {
+    "data": {
+      "createPerson": {
+        "_id": "615266e6c3540b0c2a3bab18",
+        "name": "Andrés",
+        "email": "andresmate@ucentral.edu.co"
+      }
+    }
+  }
+  ```
+- Crea un profesor (por medio de variables).
+  Mutation
+  ```graphql
+  mutation createTeacher($input: PersonInput!) {
+    createPerson(input: $input) {
+      _id
+      name
+      email
+    }
+  }
+  ```
+
+  Query Variables
+  ```json
+  {
+    "input": {
+      "name": "Eric",
+      "email": "erichacon@itc.edu.co",
+      "phone": "3124763416"
+    }
+  }
+  ```
+
+  Response
+  ```json
+  {
+    "data": {
+      "createPerson": {
+        "_id": "615275231375ea1046a98ac6",
+        "name": "Eric",
+        "email": "erichacon@itc.edu.co"
+      }
+    }
+  }
+  ```
+- Editar una persona (estudiante o profesor).
+  ```graphql
+  mutation {
+    editPerson(
       id: "60983336daa09d1dd999d1f8"
       input: { email: "prueba@gmail.com" }
     ) {
@@ -358,7 +468,7 @@ URLs de acceso:
   ```json
   {
     "data": {
-      "editStudent": {
+      "editPerson": {
         "_id": "60983336daa09d1dd999d1f8",
         "name": "Andrea",
         "email": "prueba@gmail.com"
@@ -366,24 +476,24 @@ URLs de acceso:
     }
   }
   ```
-- Elimina un estudiante.
+- Elimina una persona (estudiante o profesor).
   ```graphql
   mutation {
-    deleteStudent(id: "6098321adaa09d1dd999d1f6")
+    deletePerson(id: "6098321adaa09d1dd999d1f6")
   }
   ```
 
   ```json
   {
     "data": {
-      "deleteStudent": true
+      "deletePerson": true
     }
   }
   ```
-- Asigna o agrega un estudiante a un curso.
+- Asigna o agrega una persona (estudiante o profesor) a un curso.
   ```graphql
   mutation {
-    addPeople(
+    addPersonToCourse(
       courseID: "60ee342200a30f84ee38faaf"
       personID: "60983293daa09d1dd999d1f7"
     ) {
@@ -396,18 +506,18 @@ URLs de acceso:
   ```json
   {
     "data": {
-      "addPeople": {
+      "addPersonToCourse": {
         "_id": "60ee342200a30f84ee38faaf",
         "title": "Curso de ejemplo 1"
       }
     }
   }
   ```
-- Asigna o agrega un estudiante a un curso (por medio de variables).
+- Asigna o agrega una persona (estudiante o profesor) a un curso (por medio de variables).
   Mutation
   ```graphql
   mutation addStudentToCurse($course: ID!, $person: ID!) {
-    addPeople(courseID: $course, personID: $person) {
+    addPersonToCourse(courseID: $course, personID: $person) {
       _id
       title
     }
@@ -426,7 +536,7 @@ URLs de acceso:
   ```json
   {
     "data": {
-      "addPeople": {
+      "addPersonToCourse": {
         "_id": "60983d5455d9b427067200bb",
         "title": "Mi titulo 4"
       }

@@ -8,17 +8,31 @@ enum Level {
 type Course {
   _id: ID!
   title: String!
-  teacher: String
+  monitor: String
   description: String!
   topic: String
   people: [Student]
   level: Level
 }
 
-type Student {
+interface Person {
   _id: ID!
   name: String!
   email: String!
+}
+
+type Student implements Person {
+  _id: ID!
+  name: String!
+  email: String!
+  avatar: String
+}
+
+type Teacher implements Person {
+  _id: ID!
+  name: String!
+  email: String!
+  phone: String
 }
 
 type Query {  # Documentación del Query.
@@ -26,10 +40,10 @@ type Query {  # Documentación del Query.
   courses: [Course]
   "Devuelve un sólo curso."
   course(id: ID!): Course
-  "Devuelve todos los estudiantes."
-  students: [Student]
-  "Devuelve un estudiante."
-  student(id: ID!): Student
+  "Devuelve todos las personas (estudiantes y profesores)."
+  people: [Person]
+  "Devuelve una persona."
+  person(id: ID!): Person
 }
 
 # Inputs para los Mutation.
@@ -48,14 +62,18 @@ input CourseEditInput {
   topic: String
 }
 
-input StudentInput {
+input PersonInput {
   name: String!
   email: String!
+  phone: String
+  avatar: String
 }
 
-input StudentEditInput {
+input PersonEditInput {
   name: String
   email: String
+  phone: String
+  avatar: String
 }
 
 type Mutation {  # Documentación del Mutation.
@@ -65,12 +83,12 @@ type Mutation {  # Documentación del Mutation.
   editCourse(id: ID!, input: CourseEditInput): Course
   "Elimina un curso."
   deleteCourse(id: ID!): Boolean
-  "Crea un estudiante."
-  createStudent(input: StudentInput!): Student
-  "Editar un estudiante."
-  editStudent(id: ID!, input: StudentEditInput): Student
-  "Elimina un estudiante."
-  deleteStudent(id: ID!): Boolean
+  "Crea una persona."
+  createPerson(input: PersonInput!): Person
+  "Editar una persona."
+  editPerson(id: ID!, input: PersonEditInput): Person
+  "Elimina una persona."
+  deletePerson(id: ID!): Boolean
   "Agrega una persona a un curso."
-  addPeople(courseID: ID!, personID: ID!): Course
+  addPersonToCourse(courseID: ID!, personID: ID!): Course
 }
