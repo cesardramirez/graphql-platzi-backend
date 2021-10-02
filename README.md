@@ -244,7 +244,6 @@ URLs de acceso:
     }
   }
   ```
-
 - Obtiene todas las personas (estudiantes y profesores).
   ```graphql
   {
@@ -306,6 +305,72 @@ URLs de acceso:
           "name": "Andrea",
           "email": "andrea90@gmail.com",
           "avatar": null
+        },
+        {
+          "_id": "615266e6c3540b0c2a3bab18",
+          "name": "Andrés",
+          "email": "andresmate@ucentral.edu.co",
+          "phone": "3156787625"
+        },
+        {
+          "_id": "615275231375ea1046a98ac6",
+          "name": "Eric",
+          "email": "erichacon@itc.edu.co",
+          "phone": "3124763416"
+        }
+      ]
+    }
+  }
+  ```
+- Obtiene todas las personas (estudiantes y profesores) con el uso de directivas (incluir u imitir algunos campos).
+  Query
+  ```graphql
+  query peopleData($phone: Boolean!, $avatar: Boolean!) {
+    people {
+      ...personFields
+      ... on Teacher @include(if: $phone) {
+        phone
+      }
+      ... on Student @skip(if: $avatar) {
+        avatar
+      }
+    }
+  }
+
+  fragment personFields on Person {
+    _id
+    name
+    email
+  }
+  ```
+
+  Query Variables
+  ```json
+  {
+    "phone": true,
+    "avatar": true
+  }
+  ```
+
+  Response
+  ```json
+  {
+    "data": {
+      "people": [
+        {
+          "_id": "60983293daa09d1dd999d1f7",
+          "name": "Cesar",
+          "email": "cesardavid@gmail.com"
+        },
+        {
+          "_id": "60983f4961f3eb28d34942df",
+          "name": "Andrea",
+          "email": "andrea90@gmail.com"
+        },
+        {
+          "_id": "61526617c3540b0c2a3bab17",
+          "name": "Natalia",
+          "email": "natalia2512@gmail.com"
         },
         {
           "_id": "615266e6c3540b0c2a3bab18",
