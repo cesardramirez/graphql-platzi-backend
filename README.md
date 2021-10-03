@@ -15,16 +15,19 @@ Platzi - Curso Básico de GraphQL
 <br>`npm i graphql-tools`  _Dependencia para utilidades adicionales de GraphQL._
 <br>`npm i dotenv`  _Dependencia para manejar las variables de entorno._
 <br>`npm i mongodb`  _Dependencia para el cliente de mongodb._
+<br>`npm i cors`  _Middleware de Express que permite habilitar CORS y se usa para desplegar una API a Producción._
 
 Ejecutando el proyecto:
 
 `node index.js`  _Ejecutar la app._
 <br>`npm run dev`  _Ejecuta el servidor web con el script definido en el package.json_
 <br>`npm run lint-fix`  _Ejecuta y soluciona problemas de código._
+<br>`npm start`  _Ejecuta el servidor web de forma productiva._
 
 URLs de acceso:
-- GET (Playground) - http://localhost:3000/
-- POST - [http://localhost:3000/graphql](http://localhost:3000/)
+- GET (Playground) - [http://localhost:3000/](http://localhost:3000/)
+- GET (GraphiQL) - [http://localhost:3000/graphql](http://localhost:3000/graphql)
+- POST - [http://localhost:3000/graphql](http://localhost:3000/graphql)
 
 ## Bases de Datos - MongoDB
 1. Ingresar al [Cluster](https://cloud.mongodb.com/v2/608f451ac3335838e67c6659#clusters) de MongoDB Cloud. _(Correo de Gmail - Acceso)_
