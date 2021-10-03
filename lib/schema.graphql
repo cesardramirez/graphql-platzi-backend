@@ -5,6 +5,8 @@ enum Level {
   avanzado
 }
 
+union GlobalSearch = Course | Student | Teacher
+
 type Course {
   _id: ID!
   title: String!
@@ -44,6 +46,8 @@ type Query {  # Documentación del Query.
   people: [Person]
   "Devuelve una persona."
   person(id: ID!): Person
+  # Ejecuta una búsqueda global.
+  searchItems(keyword: String!) : [GlobalSearch]
 }
 
 # Inputs para los Mutation.

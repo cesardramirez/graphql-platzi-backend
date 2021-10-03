@@ -39,7 +39,8 @@ URLs de acceso:
 
 ### Comandos ejecutados
 `db.students.renameCollection("people", false)`  _Renombra la colección students por people._
-<br>`db.courses.updateMany( {}, { $rename: { "teacher": "monitor" } } )`  _Modifica todos los campos que se llaman teacher por monitor en el collection courses._
+<br>`db.courses.updateMany({}, { $rename: { "teacher": "monitor" }})`  _Modifica todos los campos que se llaman teacher por monitor en el collection courses._
+<br>`db.<nombre_coleccion>.createIndex({"$**": "text"})`  _Se crea un índice llamado "text" para cada una de las colecciones (courses y people)._
 
 ## Postman
 > Se pueden ejecutar los servicios también a través de [**Postman**](https://www.postman.com/) por lo cuál se dejan a continuación la colección para su ejecución:
@@ -787,6 +788,96 @@ URLs de acceso:
         "people": [],
         "topic": "diseño"
       }
+    }
+  }
+  ```
+- Realizar una consulta por un texto el particular de cualquier campo de cualquier objeto (por medio de los union types y los índices de MongoDB).
+  Query 1
+  ```graphql
+  {
+    searchItems(keyword: "diseño") {
+      __typename
+      ... on Course {
+        title
+        description
+        topic
+      }
+      ... on Student {
+        name
+        email
+        avatar
+      }
+      ... on Teacher {
+        name
+        email
+        phone
+      }
+    }
+  }
+  ```
+
+  ```json
+  {
+    "data": {
+      "searchItems": [
+        {
+          "__typename": "Course",
+          "title": "Mi titulo 4",
+          "description": "una descripcion",
+          "topic": "diseño"
+        }
+      ]
+    }
+  }
+  ```
+
+  Query 2
+  ```graphql
+  {
+    searchItems(keyword: "5") {
+      __typename
+      ... on Course {
+        title
+        description
+        topic
+      }
+      ... on Student {
+        name
+        email
+        avatar
+      }
+      ... on Teacher {
+        name
+        email
+        phone
+      }
+    }
+  }
+  ```
+
+  ```json
+  {
+    "data": {
+      "searchItems": [
+        {
+          "__typename": "Course",
+          "title": "Curso de ejemplo 5",
+          "description": "Descripcion 5",
+          "topic": "cultura"
+        },
+        {
+          "__typename": "Student",
+          "name": "Carolina 5",
+          "email": "carito@ubosque.edu.co",
+          "avatar": null
+        },
+        {
+          "__typename": "Teacher",
+          "name": "Pedro 5",
+          "email": "pedroparamo@ucentral.edu.co",
+          "phone": "3469875261"
+        }
+      ]
     }
   }
   ```
