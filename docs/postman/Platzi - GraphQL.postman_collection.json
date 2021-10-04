@@ -2,11 +2,12 @@
 	"info": {
 		"_postman_id": "0068d3f3-1850-4ac6-b241-76d8e74dcd65",
 		"name": "Platzi - GraphQL",
+		"description": "Platzi - Curso Básico de GraphQL.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Obtiene todos los cursos.",
+			"name": "[Q] Obtiene todos los cursos.",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -27,11 +28,12 @@
 					"path": [
 						"graphql"
 					]
-				}
+				},
+				"description": "**Query** que obtiene todos los cursos. Se definen los campos que deseamos que devuelva la consulta."
 			},
 			"response": [
 				{
-					"name": "Eg : Obtiene todos los cursos.",
+					"name": "Eg 1 : Obtiene todos los cursos.",
 					"originalRequest": {
 						"method": "POST",
 						"header": [],
@@ -63,20 +65,24 @@
 							"value": "Express"
 						},
 						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
 							"key": "Content-Type",
 							"value": "application/json; charset=utf-8"
 						},
 						{
 							"key": "Content-Length",
-							"value": "337"
+							"value": "499"
 						},
 						{
 							"key": "ETag",
-							"value": "W/\"151-Ii85ESNpmcUyL6afNzTwnsjbmo4\""
+							"value": "W/\"1f3-q1dwF3+Tz80Y3Bm0HTt3Em/3grE\""
 						},
 						{
 							"key": "Date",
-							"value": "Sun, 09 May 2021 20:20:30 GMT"
+							"value": "Sun, 03 Oct 2021 21:05:18 GMT"
 						},
 						{
 							"key": "Connection",
@@ -84,12 +90,72 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"data\": {\n        \"courses\": [\n            {\n                \"_id\": \"608f89930d04fb1305dbe2ff\",\n                \"title\": \"Mi titulo 1\",\n                \"topic\": \"programacion\"\n            },\n            {\n                \"_id\": \"608f89930d04fb1305dbe300\",\n                \"title\": \"Mi titulo 2\",\n                \"topic\": \"programacion\"\n            },\n            {\n                \"_id\": \"608f89930d04fb1305dbe301\",\n                \"title\": \"Mi titulo 3\",\n                \"topic\": \"programacion\"\n            },\n            {\n                \"_id\": \"60983d5455d9b427067200bb\",\n                \"title\": \"Mi titulo 4\",\n                \"topic\": \"diseño\"\n            }\n        ]\n    }\n}"
+					"body": "{\n    \"data\": {\n        \"courses\": [\n            {\n                \"_id\": \"608f89930d04fb1305dbe300\",\n                \"title\": \"Mi titulo 2\",\n                \"topic\": \"programacion\"\n            },\n            {\n                \"_id\": \"608f89930d04fb1305dbe301\",\n                \"title\": \"Mi titulo 3\",\n                \"topic\": \"programacion\"\n            },\n            {\n                \"_id\": \"60983d5455d9b427067200bb\",\n                \"title\": \"Mi titulo 4\",\n                \"topic\": \"diseño\"\n            },\n            {\n                \"_id\": \"60ee342200a30f84ee38faaf\",\n                \"title\": \"Mi titulo 1\",\n                \"topic\": \"programación\"\n            },\n            {\n                \"_id\": \"6150f5e2942ceb1b5ce811f9\",\n                \"title\": \"Curso de ejemplo 5\",\n                \"topic\": \"cultura\"\n            },\n            {\n                \"_id\": \"61510a3141d94f287da6716c\",\n                \"title\": \"Curso de ejemplo 6\",\n                \"topic\": \"arte\"\n            }\n        ]\n    }\n}"
+				},
+				{
+					"name": "Eg 2: Obtiene todos los cursos (con las personas asociadas).",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n    courses {\n        _id,\n        title,\n        topic,\n        people {\n            _id\n            name\n            email\n        }\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1071"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"42f-2WZHrRV8ztF8DzytOUBCq8Xmepw\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 03 Oct 2021 23:16:40 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"courses\": [\n            {\n                \"_id\": \"608f89930d04fb1305dbe300\",\n                \"title\": \"Mi titulo 2\",\n                \"topic\": \"programacion\",\n                \"people\": []\n            },\n            {\n                \"_id\": \"608f89930d04fb1305dbe301\",\n                \"title\": \"Mi titulo 3\",\n                \"topic\": \"programacion\",\n                \"people\": []\n            },\n            {\n                \"_id\": \"60983d5455d9b427067200bb\",\n                \"title\": \"Mi titulo 4\",\n                \"topic\": \"diseño\",\n                \"people\": [\n                    {\n                        \"_id\": \"60983f4961f3eb28d34942df\",\n                        \"name\": \"Andrea\",\n                        \"email\": \"andrea901@gmail.com\"\n                    }\n                ]\n            },\n            {\n                \"_id\": \"60ee342200a30f84ee38faaf\",\n                \"title\": \"Mi titulo 1\",\n                \"topic\": \"programación\",\n                \"people\": [\n                    {\n                        \"_id\": \"60983293daa09d1dd999d1f7\",\n                        \"name\": \"Cesar\",\n                        \"email\": \"cesardavid@gmail.com\"\n                    },\n                    {\n                        \"_id\": \"60983f4961f3eb28d34942df\",\n                        \"name\": \"Andrea\",\n                        \"email\": \"andrea901@gmail.com\"\n                    }\n                ]\n            },\n            {\n                \"_id\": \"6150f5e2942ceb1b5ce811f9\",\n                \"title\": \"Curso de ejemplo 5\",\n                \"topic\": \"cultura\",\n                \"people\": [\n                    {\n                        \"_id\": \"61526617c3540b0c2a3bab17\",\n                        \"name\": \"Natalia\",\n                        \"email\": \"natalia2512@gmail.com\"\n                    }\n                ]\n            },\n            {\n                \"_id\": \"61510a3141d94f287da6716c\",\n                \"title\": \"Curso de ejemplo 6\",\n                \"topic\": \"arte\",\n                \"people\": []\n            },\n            {\n                \"_id\": \"615a2fc6b618a6299e8287dc\",\n                \"title\": \"Curso de ejemplo 7\",\n                \"topic\": \"literatura\",\n                \"people\": [\n                    {\n                        \"_id\": \"615a3727b618a6299e8287dd\",\n                        \"name\": \"Eric\",\n                        \"email\": \"erichacon@itc.edu.co\"\n                    }\n                ]\n            }\n        ]\n    }\n}"
 				}
 			]
 		},
 		{
-			"name": "Obtiene un único curso.",
+			"name": "[Q1] Obtiene un curso según su id.",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -110,11 +176,12 @@
 					"path": [
 						"graphql"
 					]
-				}
+				},
+				"description": "**Query** que obtiene un único curso según su id enviado por parámetro."
 			},
 			"response": [
 				{
-					"name": "Eg: Obtiene un único curso.",
+					"name": "Eg 1 : Obtiene un curso.",
 					"originalRequest": {
 						"method": "POST",
 						"header": [],
@@ -146,6 +213,10 @@
 							"value": "Express"
 						},
 						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
 							"key": "Content-Type",
 							"value": "application/json; charset=utf-8"
 						},
@@ -159,7 +230,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Sun, 09 May 2021 20:21:58 GMT"
+							"value": "Sun, 03 Oct 2021 21:06:22 GMT"
 						},
 						{
 							"key": "Connection",
@@ -172,7 +243,271 @@
 			]
 		},
 		{
-			"name": "Crea un curso.",
+			"name": "[Q2] [Var-Frag] Obtiene un curso según su id.",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query infoCourse($course: ID!) {\n    course(id: $course) {\n        ...courseFields\n    }\n}\n\nfragment courseFields on Course {\n    _id\n    title\n    description\n    people {\n        _id\n        name\n    }\n}",
+						"variables": "{\n    \"course\" : \"60983d5455d9b427067200bb\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "**Query** que obtiene un único curso.\n\n- Utiliza **variables** para enviar el id parámetro.\n- Utiliza **fragmentos** para agrupar los campos a consultar."
+			},
+			"response": [
+				{
+					"name": "Eg 1 : Obtiene un curso.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query infoCourse($course: ID!) {\n    course(id: $course) {\n        ...courseFields\n    }\n}\n\nfragment courseFields on Course {\n    _id\n    title\n    description\n    people {\n        _id\n        name\n    }\n}",
+								"variables": "{\n    \"course\" : \"60983d5455d9b427067200bb\"\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "170"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"aa-X2jmwdQzC8YACGzwegXhTDdeOoI\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 03 Oct 2021 21:27:03 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"course\": {\n            \"_id\": \"60983d5455d9b427067200bb\",\n            \"title\": \"Mi titulo 4\",\n            \"description\": \"una descripcion\",\n            \"people\": [\n                {\n                    \"_id\": \"60983f4961f3eb28d34942df\",\n                    \"name\": \"Andrea\"\n                }\n            ]\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "[Q] [Alias] Obtiene varios cursos en simultaneo.",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "{\n    allCourses: courses {\n        _id\n        title\n    }\n    aliasCourse1: course(id: \"615a2fc6b618a6299e8287dc\") {\n        _id\n        title\n        description\n        topic\n    }\n    aliasCourse2: course(id: \"60983d5455d9b427067200bb\") {\n        _id\n        description\n        topic\n    }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Consulta que obtiene varios datos en simultaneo del mismo Custom Type (objeto) a través de los **alias**.\n\n- El primer objeto devuelve todos los cursos.\n- El segundo y tercer objeto devuelve un curso en específico según el id enviado como parámetro."
+			},
+			"response": [
+				{
+					"name": "Eg 1: Obtiene varios cursos en simultaneo.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n    allCourses: courses {\n        _id\n        title\n    }\n    aliasCourse1: course(id: \"615a2fc6b618a6299e8287dc\") {\n        _id\n        title\n        description\n        topic\n    }\n    aliasCourse2: course(id: \"60983d5455d9b427067200bb\") {\n        _id\n        description\n        topic\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "675"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2a3-t7OzVtK532d564jvvo/F4A7OyOo\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 03 Oct 2021 23:21:20 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"allCourses\": [\n            {\n                \"_id\": \"608f89930d04fb1305dbe300\",\n                \"title\": \"Mi titulo 2\"\n            },\n            {\n                \"_id\": \"608f89930d04fb1305dbe301\",\n                \"title\": \"Mi titulo 3\"\n            },\n            {\n                \"_id\": \"60983d5455d9b427067200bb\",\n                \"title\": \"Mi titulo 4\"\n            },\n            {\n                \"_id\": \"60ee342200a30f84ee38faaf\",\n                \"title\": \"Mi titulo 1\"\n            },\n            {\n                \"_id\": \"6150f5e2942ceb1b5ce811f9\",\n                \"title\": \"Curso de ejemplo 5\"\n            },\n            {\n                \"_id\": \"61510a3141d94f287da6716c\",\n                \"title\": \"Curso de ejemplo 6\"\n            },\n            {\n                \"_id\": \"615a2fc6b618a6299e8287dc\",\n                \"title\": \"Curso de ejemplo 7\"\n            }\n        ],\n        \"aliasCourse1\": {\n            \"_id\": \"615a2fc6b618a6299e8287dc\",\n            \"title\": \"Curso de ejemplo 7\",\n            \"description\": \"Descripcion 7\",\n            \"topic\": \"literatura\"\n        },\n        \"aliasCourse2\": {\n            \"_id\": \"60983d5455d9b427067200bb\",\n            \"description\": \"una descripcion\",\n            \"topic\": \"diseño\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "[Q] [Alias-Frag] Obtiene varios cursos en simultaneo.",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "{\n    allCourses: courses {\n        ...courseFields\n    }\n    aliasCourse1: course(id: \"60983d5455d9b427067200bb\") {\n        ...courseFields\n        monitor\n    }\n    aliasCourse2: course(id: \"60983d5455d9b427067200bb\") {\n        ...courseFields\n        topic\n    }\n}\n\nfragment courseFields on Course {\n    _id\n    title\n    description\n    people {\n        _id\n        name\n        email\n    }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Consulta que obtiene varios datos en simultaneo del mismo Custom Type (objeto) a través de los **alias**. De igual manera se añaden los **fragmentos** para agrupar los campos en común para cada consulta interna y añadir otros adicionales.\n\n- El primer objeto devuelve todos los cursos.\n- El segundo y tercer objeto devuelve un curso en específico según el id enviado como parámetro."
+			},
+			"response": [
+				{
+					"name": "Eg 1: Obtiene varios cursos en simultaneo.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n    allCourses: courses {\n        ...courseFields\n    }\n    aliasCourse1: course(id: \"60983d5455d9b427067200bb\") {\n        ...courseFields\n        monitor\n    }\n    aliasCourse2: course(id: \"60983d5455d9b427067200bb\") {\n        ...courseFields\n        topic\n    }\n}\n\nfragment courseFields on Course {\n    _id\n    title\n    description\n    people {\n        _id\n        name\n        email\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1573"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"625-oj9O2ZUYd+jWEGGuFbQQ3uOGT2A\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 03 Oct 2021 23:26:59 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"allCourses\": [\n            {\n                \"_id\": \"608f89930d04fb1305dbe300\",\n                \"title\": \"Mi titulo 2\",\n                \"description\": \"una descripcion\",\n                \"people\": []\n            },\n            {\n                \"_id\": \"608f89930d04fb1305dbe301\",\n                \"title\": \"Mi titulo 3\",\n                \"description\": \"una descripcion\",\n                \"people\": []\n            },\n            {\n                \"_id\": \"60983d5455d9b427067200bb\",\n                \"title\": \"Mi titulo 4\",\n                \"description\": \"una descripcion\",\n                \"people\": [\n                    {\n                        \"_id\": \"60983f4961f3eb28d34942df\",\n                        \"name\": \"Andrea\",\n                        \"email\": \"andrea901@gmail.com\"\n                    }\n                ]\n            },\n            {\n                \"_id\": \"60ee342200a30f84ee38faaf\",\n                \"title\": \"Mi titulo 1\",\n                \"description\": \"una descripcion\",\n                \"people\": [\n                    {\n                        \"_id\": \"60983293daa09d1dd999d1f7\",\n                        \"name\": \"Cesar\",\n                        \"email\": \"cesardavid@gmail.com\"\n                    },\n                    {\n                        \"_id\": \"60983f4961f3eb28d34942df\",\n                        \"name\": \"Andrea\",\n                        \"email\": \"andrea901@gmail.com\"\n                    }\n                ]\n            },\n            {\n                \"_id\": \"6150f5e2942ceb1b5ce811f9\",\n                \"title\": \"Curso de ejemplo 5\",\n                \"description\": \"Descripcion 5\",\n                \"people\": [\n                    {\n                        \"_id\": \"61526617c3540b0c2a3bab17\",\n                        \"name\": \"Natalia\",\n                        \"email\": \"natalia2512@gmail.com\"\n                    }\n                ]\n            },\n            {\n                \"_id\": \"61510a3141d94f287da6716c\",\n                \"title\": \"Curso de ejemplo 6\",\n                \"description\": \"Descripcion 6\",\n                \"people\": []\n            },\n            {\n                \"_id\": \"615a2fc6b618a6299e8287dc\",\n                \"title\": \"Curso de ejemplo 7\",\n                \"description\": \"Descripcion 7\",\n                \"people\": [\n                    {\n                        \"_id\": \"615a3727b618a6299e8287dd\",\n                        \"name\": \"Eric\",\n                        \"email\": \"erichacon@itc.edu.co\"\n                    }\n                ]\n            }\n        ],\n        \"aliasCourse1\": {\n            \"_id\": \"60983d5455d9b427067200bb\",\n            \"title\": \"Mi titulo 4\",\n            \"description\": \"una descripcion\",\n            \"people\": [\n                {\n                    \"_id\": \"60983f4961f3eb28d34942df\",\n                    \"name\": \"Andrea\",\n                    \"email\": \"andrea901@gmail.com\"\n                }\n            ],\n            \"monitor\": \"\"\n        },\n        \"aliasCourse2\": {\n            \"_id\": \"60983d5455d9b427067200bb\",\n            \"title\": \"Mi titulo 4\",\n            \"description\": \"una descripcion\",\n            \"people\": [\n                {\n                    \"_id\": \"60983f4961f3eb28d34942df\",\n                    \"name\": \"Andrea\",\n                    \"email\": \"andrea901@gmail.com\"\n                }\n            ],\n            \"topic\": \"diseño\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "[M1] Crear un curso.",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -193,11 +528,12 @@
 					"path": [
 						"graphql"
 					]
-				}
+				},
+				"description": "Crea un curso por medio de un **mutation**. Define un **input** que es un conjunto de campos necesarios para construir un curso."
 			},
 			"response": [
 				{
-					"name": "Eg : Crea un curso.",
+					"name": "Eg 1 : Crear un curso.",
 					"originalRequest": {
 						"method": "POST",
 						"header": [],
@@ -255,7 +591,95 @@
 			]
 		},
 		{
-			"name": "Edita un curso.",
+			"name": "[M2] [Var] Crear un curso.",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation createCourse($input: CourseInput!){\n    createCourse(input: $input) {\n        _id\n        title\n        description\n    }\n}",
+						"variables": "{\n    \"input\": {\n        \"title\": \"Curso de ejemplo 7\",\n        \"description\": \"Descripcion 7\",\n        \"topic\": \"literatura\",\n        \"level\": \"principiante\"\n    }\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Crea un curso por medio de un **mutation** enviando un _input_ como parámetro.\n\nA través de **variables** se construye el input añadiendo un campo llamado _level_ que es un **Enum** definido para el curso."
+			},
+			"response": [
+				{
+					"name": "Eg 1: Crear un curso.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation createCourse($input: CourseInput!){\n    createCourse(input: $input) {\n        _id\n        title\n        description\n    }\n}",
+								"variables": "{\n    \"input\": {\n        \"title\": \"Curso de ejemplo 7\",\n        \"description\": \"Descripcion 7\",\n        \"topic\": \"literatura\",\n        \"level\": \"principiante\"\n    }\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "119"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"77-Jq8YeprEdF9BARSDHmPxK+JLeK4\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 03 Oct 2021 22:33:42 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"createCourse\": {\n            \"_id\": \"615a2fc6b618a6299e8287dc\",\n            \"title\": \"Curso de ejemplo 7\",\n            \"description\": \"Descripcion 7\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "[M] Edita un curso según su id.",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -276,11 +700,12 @@
 					"path": [
 						"graphql"
 					]
-				}
+				},
+				"description": "Edita un curso por medio de un **mutation**. Se envía como parámetro el id y un **input** que representa los campos a modificar."
 			},
 			"response": [
 				{
-					"name": "Eg : Edita un curso.",
+					"name": "Eg 1 : Edita un curso.",
 					"originalRequest": {
 						"method": "POST",
 						"header": [],
@@ -338,7 +763,7 @@
 			]
 		},
 		{
-			"name": "Elimina un curso.",
+			"name": "[M] Elimina un curso según su id.",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -359,20 +784,17 @@
 					"path": [
 						"graphql"
 					]
-				}
+				},
+				"description": "Elimina un curso por medio de un **mutation**. Se envía el id por parámetro."
 			},
 			"response": [
 				{
-					"name": "Eg : Elimina un curso.",
+					"name": "Eg 1 : Elimina un curso.",
 					"originalRequest": {
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "graphql",
-							"graphql": {
-								"query": "mutation {\n    deleteCourse(id: \"60984535c20e9d2d233fa1b8\")\n}",
-								"variables": ""
-							}
+							"mode": "graphql"
 						},
 						"url": {
 							"raw": "http://localhost:3000/graphql",
@@ -421,14 +843,14 @@
 			]
 		},
 		{
-			"name": "Obtiene todos los estudiantes.",
+			"name": "[Q1] Obtiene todas las personas.",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "{\n    students {\n        _id\n        name\n        email\n    }\n}",
+						"query": "{\n    people {\n        _id\n        name\n        email\n    }\n}",
 						"variables": ""
 					}
 				},
@@ -442,18 +864,19 @@
 					"path": [
 						"graphql"
 					]
-				}
+				},
+				"description": "Obtiene todas las personas (estudiantes y profesores).\n\n- Sólo se deja el campo name e email, que son propios de persona.\n- Si se añade el campo phone que es propio de Teacher mostrará un mensaje de error."
 			},
 			"response": [
 				{
-					"name": "Eg : Obtiene todos los estudiantes.",
+					"name": "Eg 1: Obtiene todas las personas.",
 					"originalRequest": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "{\n    students {\n        _id\n        name\n        email\n    }\n}",
+								"query": "{\n    people {\n        _id\n        name\n        email\n    }\n}",
 								"variables": ""
 							}
 						},
@@ -476,6 +899,10 @@
 						{
 							"key": "X-Powered-By",
 							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
 						},
 						{
 							"key": "Content-Type",
@@ -483,15 +910,15 @@
 						},
 						{
 							"key": "Content-Length",
-							"value": "184"
+							"value": "612"
 						},
 						{
 							"key": "ETag",
-							"value": "W/\"b8-bbqwg7525VD8NjnJX1ApePhZGrU\""
+							"value": "W/\"264-lK0Wjz8VTjvKMV4az6x3Xui7yKo\""
 						},
 						{
 							"key": "Date",
-							"value": "Sun, 09 May 2021 20:53:30 GMT"
+							"value": "Sun, 03 Oct 2021 21:54:28 GMT"
 						},
 						{
 							"key": "Connection",
@@ -499,44 +926,17 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"data\": {\n        \"students\": [\n            {\n                \"_id\": \"60983293daa09d1dd999d1f7\",\n                \"name\": \"Cesar\",\n                \"email\": \"cesardavid@gmail.com\"\n            },\n            {\n                \"_id\": \"60983f4961f3eb28d34942df\",\n                \"name\": \"Andrea\",\n                \"email\": \"andrea90@gmail.com\"\n            }\n        ]\n    }\n}"
-				}
-			]
-		},
-		{
-			"name": "Obtiene un único estudiante.",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "graphql",
-					"graphql": {
-						"query": "{\n    student(id: \"60983293daa09d1dd999d1f7\") {\n        name\n        email\n    }\n}",
-						"variables": ""
-					}
+					"body": "{\n    \"data\": {\n        \"people\": [\n            {\n                \"_id\": \"60983293daa09d1dd999d1f7\",\n                \"name\": \"Cesar\",\n                \"email\": \"cesardavid@gmail.com\"\n            },\n            {\n                \"_id\": \"60983f4961f3eb28d34942df\",\n                \"name\": \"Andrea\",\n                \"email\": \"andrea90@gmail.com\"\n            },\n            {\n                \"_id\": \"61526617c3540b0c2a3bab17\",\n                \"name\": \"Natalia\",\n                \"email\": \"natalia2512@gmail.com\"\n            },\n            {\n                \"_id\": \"615266e6c3540b0c2a3bab18\",\n                \"name\": \"Andrés\",\n                \"email\": \"andresmate@ucentral.edu.co\"\n            },\n            {\n                \"_id\": \"615275231375ea1046a98ac6\",\n                \"name\": \"Eric\",\n                \"email\": \"erichacon@itc.edu.co\"\n            },\n            {\n                \"_id\": \"6159d6cb2c464e0bbf9b5f4c\",\n                \"name\": \"Pedro 5\",\n                \"email\": \"pedroparamo@ucentral.edu.co\"\n            },\n            {\n                \"_id\": \"6159d7062c464e0bbf9b5f4d\",\n                \"name\": \"Carolina 5\",\n                \"email\": \"carito@ubosque.edu.co\"\n            }\n        ]\n    }\n}"
 				},
-				"url": {
-					"raw": "http://localhost:3000/graphql",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"graphql"
-					]
-				}
-			},
-			"response": [
 				{
-					"name": "Eg : Obtiene un único estudiante.",
+					"name": "Eg 2: Error al traer phone.",
 					"originalRequest": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "{\n    student(id: \"60983293daa09d1dd999d1f7\") {\n        name\n        email\n    }\n}",
+								"query": "{\n    people {\n        _id\n        name\n        email\n        phone\n    }\n}",
 								"variables": ""
 							}
 						},
@@ -552,13 +952,17 @@
 							]
 						}
 					},
-					"status": "OK",
-					"code": 200,
+					"status": "Bad Request",
+					"code": 400,
 					"_postman_previewlanguage": "json",
 					"header": [
 						{
 							"key": "X-Powered-By",
 							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
 						},
 						{
 							"key": "Content-Type",
@@ -566,15 +970,15 @@
 						},
 						{
 							"key": "Content-Length",
-							"value": "68"
+							"value": "166"
 						},
 						{
 							"key": "ETag",
-							"value": "W/\"44-+qmVPTWZGGqIWRJzn1Xce8Iaj4M\""
+							"value": "W/\"a6-IoQT8yLIxnj8FPtcSs9iuSTpwqw\""
 						},
 						{
 							"key": "Date",
-							"value": "Sun, 09 May 2021 20:33:18 GMT"
+							"value": "Sun, 03 Oct 2021 21:56:48 GMT"
 						},
 						{
 							"key": "Connection",
@@ -582,19 +986,19 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"data\": {\n        \"student\": {\n            \"name\": \"Cesar\",\n            \"email\": \"cesardavid@gmail.com\"\n        }\n    }\n}"
+					"body": "{\n    \"errors\": [\n        {\n            \"message\": \"Cannot query field \\\"phone\\\" on type \\\"Person\\\". Did you mean to use an inline fragment on \\\"Teacher\\\"?\",\n            \"locations\": [\n                {\n                    \"line\": 6,\n                    \"column\": 9\n                }\n            ]\n        }\n    ]\n}"
 				}
 			]
 		},
 		{
-			"name": "Crea un estudiante.",
+			"name": "[Q2] [Infz] Obtiene estudiantes y profesores.",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n    createStudent(input: { name: \"Cesar\", email: \"cesardavid@gmail.com\" }) {\n        _id\n        name\n        email\n    }\n}",
+						"query": "{\n    people {\n        _id\n        name\n        email\n        ... on Teacher {\n            phone\n        }\n        ... on Student {\n            avatar\n        }\n    }\n}",
 						"variables": ""
 					}
 				},
@@ -608,18 +1012,19 @@
 					"path": [
 						"graphql"
 					]
-				}
+				},
+				"description": "Obtiene todas las personas (estudiantes y profesores) con TODOS sus campos.\n\n- _Person_ es una interfaz que se implementa en _Student_ y en _Teacher_.\n- Separando los campos correspondientes a cada Custom Type (objetos) se puede traer toda la información de las personas y los campos de cada uno."
 			},
 			"response": [
 				{
-					"name": "Eg : Crea un estudiante.",
+					"name": "Eg 1: Obtiene estudiantes y profesores.",
 					"originalRequest": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "mutation {\n    createStudent(input: { name: \"Cesar\", email: \"cesardavid@gmail.com\" }) {\n        _id\n        name\n        email\n    }\n}",
+								"query": "{\n    people {\n        _id\n        name\n        email\n        ... on Teacher {\n            phone\n        }\n        ... on Student {\n            avatar\n        }\n    }\n}",
 								"variables": ""
 							}
 						},
@@ -642,6 +1047,570 @@
 						{
 							"key": "X-Powered-By",
 							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "837"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"345-NrEUe9MuYqh8d1lUfczLAy7NmE4\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 03 Oct 2021 22:39:29 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"people\": [\n            {\n                \"_id\": \"60983293daa09d1dd999d1f7\",\n                \"name\": \"Cesar\",\n                \"email\": \"cesardavid@gmail.com\",\n                \"avatar\": null\n            },\n            {\n                \"_id\": \"60983f4961f3eb28d34942df\",\n                \"name\": \"Andrea\",\n                \"email\": \"andrea901@gmail.com\",\n                \"avatar\": null\n            },\n            {\n                \"_id\": \"61526617c3540b0c2a3bab17\",\n                \"name\": \"Natalia\",\n                \"email\": \"natalia2512@gmail.com\",\n                \"avatar\": null\n            },\n            {\n                \"_id\": \"615266e6c3540b0c2a3bab18\",\n                \"name\": \"Andrés\",\n                \"email\": \"andresmate@ucentral.edu.co\",\n                \"phone\": \"3156787625\"\n            },\n            {\n                \"_id\": \"615275231375ea1046a98ac6\",\n                \"name\": \"Eric\",\n                \"email\": \"erichacon@itc.edu.co\",\n                \"phone\": \"3124763416\"\n            },\n            {\n                \"_id\": \"6159d6cb2c464e0bbf9b5f4c\",\n                \"name\": \"Pedro 5\",\n                \"email\": \"pedroparamo@ucentral.edu.co\",\n                \"phone\": \"3469875261\"\n            },\n            {\n                \"_id\": \"6159d7062c464e0bbf9b5f4d\",\n                \"name\": \"Carolina 5\",\n                \"email\": \"carito@ubosque.edu.co\",\n                \"avatar\": null\n            },\n            {\n                \"_id\": \"615a2961b618a6299e8287db\",\n                \"name\": \"Johana\",\n                \"email\": \"joha561@ubosque.edu.co\",\n                \"phone\": \"3651264581\"\n            }\n        ]\n    }\n}"
+				},
+				{
+					"name": "Eg 2: Obtiene el email sólo a los estudiantes.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n    people {\n        _id\n        name\n        ... on Teacher {\n            phone\n        }\n        ... on Student {\n            avatar\n            email\n        }\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "698"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2ba-EpDqnLKZZ+KgyC+L/7MkeWuw6MQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 03 Oct 2021 22:39:43 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"people\": [\n            {\n                \"_id\": \"60983293daa09d1dd999d1f7\",\n                \"name\": \"Cesar\",\n                \"avatar\": null,\n                \"email\": \"cesardavid@gmail.com\"\n            },\n            {\n                \"_id\": \"60983f4961f3eb28d34942df\",\n                \"name\": \"Andrea\",\n                \"avatar\": null,\n                \"email\": \"andrea901@gmail.com\"\n            },\n            {\n                \"_id\": \"61526617c3540b0c2a3bab17\",\n                \"name\": \"Natalia\",\n                \"avatar\": null,\n                \"email\": \"natalia2512@gmail.com\"\n            },\n            {\n                \"_id\": \"615266e6c3540b0c2a3bab18\",\n                \"name\": \"Andrés\",\n                \"phone\": \"3156787625\"\n            },\n            {\n                \"_id\": \"615275231375ea1046a98ac6\",\n                \"name\": \"Eric\",\n                \"phone\": \"3124763416\"\n            },\n            {\n                \"_id\": \"6159d6cb2c464e0bbf9b5f4c\",\n                \"name\": \"Pedro 5\",\n                \"phone\": \"3469875261\"\n            },\n            {\n                \"_id\": \"6159d7062c464e0bbf9b5f4d\",\n                \"name\": \"Carolina 5\",\n                \"avatar\": null,\n                \"email\": \"carito@ubosque.edu.co\"\n            },\n            {\n                \"_id\": \"615a2961b618a6299e8287db\",\n                \"name\": \"Johana\",\n                \"phone\": \"3651264581\"\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "[Q3] [Dirc] Obtiene estudiantes y profesores.",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query peopleData($phone: Boolean!, $avatar: Boolean!) {\n    people {\n        ...personFields\n        ... on Teacher @include(if: $phone) {\n            phone\n        }\n        ... on Student @skip(if: $avatar) {\n            avatar\n        }\n    }\n}\n\nfragment personFields on Person {\n    _id\n    name\n    email\n}",
+						"variables": "{\n    \"phone\": true,\n    \"avatar\": true\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Obtiene todas las personas (estudiantes y profesores) con el uso de **directivas** (el cual incluye u omite algunos campos).\n\n- Se utiliza **@include(if: <_condicion_>)** para indicar si se coloca o no un campo en la respuesta de la consulta.\n- Se utiliza **@skip(if: <_condicion_>)** para indicar si se omite o no un campo en la respuesta de la consulta."
+			},
+			"response": [
+				{
+					"name": "Eg 1: Obtiene teléfonos y excluye avatares.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query peopleData($phone: Boolean!, $avatar: Boolean!) {\n    people {\n        ...personFields\n        ... on Teacher @include(if: $phone) {\n            phone\n        }\n        ... on Student @skip(if: $avatar) {\n            avatar\n        }\n    }\n}\n\nfragment personFields on Person {\n    _id\n    name\n    email\n}",
+								"variables": "{\n    \"phone\": true,\n    \"avatar\": true\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "781"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"30d-Q/p4NPLi3Ho8je2WHV73mbS6jWI\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 03 Oct 2021 22:47:25 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"people\": [\n            {\n                \"_id\": \"60983293daa09d1dd999d1f7\",\n                \"name\": \"Cesar\",\n                \"email\": \"cesardavid@gmail.com\"\n            },\n            {\n                \"_id\": \"60983f4961f3eb28d34942df\",\n                \"name\": \"Andrea\",\n                \"email\": \"andrea901@gmail.com\"\n            },\n            {\n                \"_id\": \"61526617c3540b0c2a3bab17\",\n                \"name\": \"Natalia\",\n                \"email\": \"natalia2512@gmail.com\"\n            },\n            {\n                \"_id\": \"615266e6c3540b0c2a3bab18\",\n                \"name\": \"Andrés\",\n                \"email\": \"andresmate@ucentral.edu.co\",\n                \"phone\": \"3156787625\"\n            },\n            {\n                \"_id\": \"615275231375ea1046a98ac6\",\n                \"name\": \"Eric\",\n                \"email\": \"erichacon@itc.edu.co\",\n                \"phone\": \"3124763416\"\n            },\n            {\n                \"_id\": \"6159d6cb2c464e0bbf9b5f4c\",\n                \"name\": \"Pedro 5\",\n                \"email\": \"pedroparamo@ucentral.edu.co\",\n                \"phone\": \"3469875261\"\n            },\n            {\n                \"_id\": \"6159d7062c464e0bbf9b5f4d\",\n                \"name\": \"Carolina 5\",\n                \"email\": \"carito@ubosque.edu.co\"\n            },\n            {\n                \"_id\": \"615a2961b618a6299e8287db\",\n                \"name\": \"Johana\",\n                \"email\": \"joha561@ubosque.edu.co\",\n                \"phone\": \"3651264581\"\n            }\n        ]\n    }\n}"
+				},
+				{
+					"name": "Eg 2: No obtiene teléfonos e incluye avatares.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query peopleData($phone: Boolean!, $avatar: Boolean!) {\n    people {\n        ...personFields\n        ... on Teacher @include(if: $phone) {\n            phone\n        }\n        ... on Student @skip(if: $avatar) {\n            avatar\n        }\n    }\n}\n\nfragment personFields on Person {\n    _id\n    name\n    email\n}",
+								"variables": "{\n    \"phone\": false,\n    \"avatar\": false\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "753"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2f1-xZW7EZdXK9NYO+hPjQtcenoCDOQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 03 Oct 2021 22:48:53 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"people\": [\n            {\n                \"_id\": \"60983293daa09d1dd999d1f7\",\n                \"name\": \"Cesar\",\n                \"email\": \"cesardavid@gmail.com\",\n                \"avatar\": null\n            },\n            {\n                \"_id\": \"60983f4961f3eb28d34942df\",\n                \"name\": \"Andrea\",\n                \"email\": \"andrea901@gmail.com\",\n                \"avatar\": null\n            },\n            {\n                \"_id\": \"61526617c3540b0c2a3bab17\",\n                \"name\": \"Natalia\",\n                \"email\": \"natalia2512@gmail.com\",\n                \"avatar\": null\n            },\n            {\n                \"_id\": \"615266e6c3540b0c2a3bab18\",\n                \"name\": \"Andrés\",\n                \"email\": \"andresmate@ucentral.edu.co\"\n            },\n            {\n                \"_id\": \"615275231375ea1046a98ac6\",\n                \"name\": \"Eric\",\n                \"email\": \"erichacon@itc.edu.co\"\n            },\n            {\n                \"_id\": \"6159d6cb2c464e0bbf9b5f4c\",\n                \"name\": \"Pedro 5\",\n                \"email\": \"pedroparamo@ucentral.edu.co\"\n            },\n            {\n                \"_id\": \"6159d7062c464e0bbf9b5f4d\",\n                \"name\": \"Carolina 5\",\n                \"email\": \"carito@ubosque.edu.co\",\n                \"avatar\": null\n            },\n            {\n                \"_id\": \"615a2961b618a6299e8287db\",\n                \"name\": \"Johana\",\n                \"email\": \"joha561@ubosque.edu.co\"\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "[Q1] Obtiene una persona.",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "{\n    person(id: \"60983293daa09d1dd999d1f7\") {\n        name\n        email\n    }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Consulta que trae los datos de una persona según su id."
+			},
+			"response": [
+				{
+					"name": "Eg 1: Obtiene una persona.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n    person(id: \"60983293daa09d1dd999d1f7\") {\n        name\n        email\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "67"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"43-3QSWsGNit0dMlVggSnoWw59RG+4\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 03 Oct 2021 21:59:16 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"person\": {\n            \"name\": \"Cesar\",\n            \"email\": \"cesardavid@gmail.com\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "[Q2] [Var] Obtiene una persona.",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query infoStudent($person: ID!) {\n    person(id: $person) {\n        name\n        email\n    }\n}",
+						"variables": "{\n    \"person\": \"60983293daa09d1dd999d1f7\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "**Query** que trae los datos de una persona (estudiante) según su id a través de **variables**."
+			},
+			"response": [
+				{
+					"name": "Eg 1: Obtiene un estudiante.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query infoStudent($person: ID!) {\n    person(id: $person) {\n        name\n        email\n    }\n}",
+								"variables": "{\n    \"person\": \"60983293daa09d1dd999d1f7\"\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "67"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"43-3QSWsGNit0dMlVggSnoWw59RG+4\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 03 Oct 2021 22:52:35 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"person\": {\n            \"name\": \"Cesar\",\n            \"email\": \"cesardavid@gmail.com\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "[M] Crea un estudiante.",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n    createPerson(input: { name: \"David\", email: \"davidlozano@gmail.com\" }) {\n        _id\n        name\n        email\n    }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Crea un profesor a través de un **mutation**.\n\n- Un estudiante está conformado con los campos de nombre e email.\n- No se puede devolver el campo phone directamente en la consulta ya retorna es un Person."
+			},
+			"response": [
+				{
+					"name": "Eg 1: Crea un estudiante.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n    createPerson(input: { name: \"Johana\", email: \"joha561@ubosque.edu.co\", phone: \"3651264581\" }) {\n        _id\n        name\n        email\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "109"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"6d-TdwNbSOxwrK29Cm6T6bFhURqUZs\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 03 Oct 2021 22:06:25 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"createPerson\": {\n            \"_id\": \"615a2961b618a6299e8287db\",\n            \"name\": \"Johana\",\n            \"email\": \"joha561@ubosque.edu.co\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "[M1] Crea un profesor.",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n    createPerson(input: { name: \"Johana\", email: \"joha561@ubosque.edu.co\", phone: \"3651264581\" }) {\n        _id\n        name\n        email\n    }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Crea un estudiante a través de un **mutation**.\n\nUn profesor está conformado con los campos de nombre, email y phone."
+			},
+			"response": [
+				{
+					"name": "Eg 1: Crea un profesor.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n    createPerson(input: { name: \"David\", email: \"davidlozano@gmail.com\" }) {\n        _id\n        name\n        email\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
 						},
 						{
 							"key": "Content-Type",
@@ -653,11 +1622,11 @@
 						},
 						{
 							"key": "ETag",
-							"value": "W/\"6b-rcik4Ji53hD6ay1Zjem05WYHHvc\""
+							"value": "W/\"6b-8bkekYtO8iGwda2ZxhPVEoxdHYE\""
 						},
 						{
 							"key": "Date",
-							"value": "Sun, 09 May 2021 20:50:33 GMT"
+							"value": "Sun, 03 Oct 2021 22:03:37 GMT"
 						},
 						{
 							"key": "Connection",
@@ -665,19 +1634,107 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"data\": {\n        \"createStudent\": {\n            \"_id\": \"60984b19c20e9d2d233fa1b9\",\n            \"name\": \"Cesar\",\n            \"email\": \"cesardavid@gmail.com\"\n        }\n    }\n}"
+					"body": "{\n    \"data\": {\n        \"createPerson\": {\n            \"_id\": \"615a28b8b618a6299e8287da\",\n            \"name\": \"David\",\n            \"email\": \"davidlozano@gmail.com\"\n        }\n    }\n}"
 				}
 			]
 		},
 		{
-			"name": "Edita un estudiante.",
+			"name": "[M2] [Var] Crea un profesor.",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n    editStudent(\n        id: \"60983f4961f3eb28d34942df\"\n        input: { email: \"andrea90@gmail.com\" }\n    ) {\n        _id\n        name\n        email\n    }\n}",
+						"query": "mutation createTeacher($input: PersonInput!) {\n    createPerson(input: $input) {\n        _id\n        name\n        email\n    }\n}",
+						"variables": "{\n    \"input\": {\n        \"name\": \"Eric\",\n        \"email\": \"erichacon@itc.edu.co\",\n        \"phone\": \"3124763416\"\n    }\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Crea un estudiante a través de un **mutation** y enviando el _input por medio de **variables**.\n\nUn profesor está conformado con los campos de nombre, email y phone."
+			},
+			"response": [
+				{
+					"name": "Eg 1: Crea un profesor.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation createTeacher($input: PersonInput!) {\n    createPerson(input: $input) {\n        _id\n        name\n        email\n    }\n}",
+								"variables": "{\n    \"input\": {\n        \"name\": \"Eric\",\n        \"email\": \"erichacon@itc.edu.co\",\n        \"phone\": \"3124763416\"\n    }\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "105"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"69-92Z5HoSXgf0gGgKuGkhDsFcfxYE\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 03 Oct 2021 23:05:11 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"createPerson\": {\n            \"_id\": \"615a3727b618a6299e8287dd\",\n            \"name\": \"Eric\",\n            \"email\": \"erichacon@itc.edu.co\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "[M] Edita una persona.",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n    editPerson(\n        id: \"60983f4961f3eb28d34942df\"\n        input: { email: \"andrea901@gmail.com\" }\n    ) {\n        _id\n        name\n        email\n    }\n}",
 						"variables": ""
 					}
 				},
@@ -691,18 +1748,19 @@
 					"path": [
 						"graphql"
 					]
-				}
+				},
+				"description": "Edita una persona a través de un **mutation**. \n\n- Se envía como parámetro el id y los datos que de van a modificar, en este caso, sólo el email (aunque se pueden modificar los otros campos según el _PersonInput_ definido).\n- Se puede modificar tanto un Estudiante como un Profesor."
 			},
 			"response": [
 				{
-					"name": "Eg : Edita un estudiante.",
+					"name": "Eg 1 : Edita una persona.",
 					"originalRequest": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "mutation {\n    editStudent(\n        id: \"60983f4961f3eb28d34942df\"\n        input: { email: \"andrea90@gmail.com\" }\n    ) {\n        _id\n        name\n        email\n    }\n}",
+								"query": "mutation {\n    editPerson(\n        id: \"60983f4961f3eb28d34942df\"\n        input: { email: \"andrea901@gmail.com\" }\n    ) {\n        _id\n        name\n        email\n    }\n}",
 								"variables": ""
 							}
 						},
@@ -725,6 +1783,10 @@
 						{
 							"key": "X-Powered-By",
 							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
 						},
 						{
 							"key": "Content-Type",
@@ -736,11 +1798,11 @@
 						},
 						{
 							"key": "ETag",
-							"value": "W/\"68-4/OjRTemHEQ0W40Y015RSC6hvH4\""
+							"value": "W/\"68-0Kp9zxDwxJtvHgS7lyg8oBBantg\""
 						},
 						{
 							"key": "Date",
-							"value": "Sun, 09 May 2021 20:52:26 GMT"
+							"value": "Sun, 03 Oct 2021 22:09:13 GMT"
 						},
 						{
 							"key": "Connection",
@@ -748,19 +1810,19 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"data\": {\n        \"editStudent\": {\n            \"_id\": \"60983f4961f3eb28d34942df\",\n            \"name\": \"Andrea\",\n            \"email\": \"andrea90@gmail.com\"\n        }\n    }\n}"
+					"body": "{\n    \"data\": {\n        \"editPerson\": {\n            \"_id\": \"60983f4961f3eb28d34942df\",\n            \"name\": \"Andrea\",\n            \"email\": \"andrea901@gmail.com\"\n        }\n    }\n}"
 				}
 			]
 		},
 		{
-			"name": "Elimina un estudiante.",
+			"name": "[M] Elimina una persona.",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n    deleteStudent(id: \"60984b19c20e9d2d233fa1b9\")\n}",
+						"query": "mutation {\n    deletePerson(id: \"615a28b8b618a6299e8287da\")\n}",
 						"variables": ""
 					}
 				},
@@ -774,18 +1836,19 @@
 					"path": [
 						"graphql"
 					]
-				}
+				},
+				"description": "**Mutation** que permite eliminar una persona enviando su id como parámetro.\n\n- Se puede eliminar tanto un Estudiante como un Profesor.\n- Retorna _true_ si la eliminación fue exitosa."
 			},
 			"response": [
 				{
-					"name": "Eg : Elimina un estudiante",
+					"name": "Eg 1 : Elimina una persona.",
 					"originalRequest": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "mutation {\n    deleteStudent(id: \"60984b19c20e9d2d233fa1b9\")\n}",
+								"query": "mutation {\n    deletePerson(id: \"615a28b8b618a6299e8287da\")\n}",
 								"variables": ""
 							}
 						},
@@ -810,20 +1873,24 @@
 							"value": "Express"
 						},
 						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
 							"key": "Content-Type",
 							"value": "application/json; charset=utf-8"
 						},
 						{
 							"key": "Content-Length",
-							"value": "31"
+							"value": "30"
 						},
 						{
 							"key": "ETag",
-							"value": "W/\"1f-hIdF7SXJavAss8DuHZ7bmUfhogw\""
+							"value": "W/\"1e-YVWsUC0d8TA5KTLgR8n/c0nv/Nc\""
 						},
 						{
 							"key": "Date",
-							"value": "Sun, 09 May 2021 20:53:14 GMT"
+							"value": "Sun, 03 Oct 2021 22:13:35 GMT"
 						},
 						{
 							"key": "Connection",
@@ -831,7 +1898,331 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"data\": {\n        \"deleteStudent\": true\n    }\n}"
+					"body": "{\n    \"data\": {\n        \"deletePerson\": true\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "[M1] Asigna una persona (estudiante o profesor) a un curso.",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n    addPersonToCourse(\n        courseID: \"615a2fc6b618a6299e8287dc\"\n        personID: \"615a3727b618a6299e8287dd\"\n    ) {\n        _id\n        title\n    }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "**Mutation** que permite asignar a una persona (estudiante o profesor) a un curso.\n\nSe envía como parámetros el id del curso y el id de la persona."
+			},
+			"response": [
+				{
+					"name": "Eg 1: Asigna una persona a un curso.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n    addPersonToCourse(\n        courseID: \"615a2fc6b618a6299e8287dc\"\n        personID: \"615a3727b618a6299e8287dd\"\n    ) {\n        _id\n        title\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "94"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"5e-lj1VhPMGRMxoEnao9o+U4xsJc0Q\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 03 Oct 2021 23:09:33 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"addPersonToCourse\": {\n            \"_id\": \"615a2fc6b618a6299e8287dc\",\n            \"title\": \"Curso de ejemplo 7\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "[M2] [Var] Asigna una persona (estudiante o profesor) a un curso.",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation addStudentToCurse($course: ID!, $person: ID!) {\n    addPersonToCourse(courseID: $course, personID: $person) {\n        _id\n        title\n    }\n}",
+						"variables": "{\n    \"course\": \"6150f5e2942ceb1b5ce811f9\",\n    \"person\": \"61526617c3540b0c2a3bab17\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "**Mutation** que permite asignar a una persona (estudiante o profesor) a un curso.\n\nSe envía como parámetros el id del curso y el id de la persona por medio de **variables**."
+			},
+			"response": [
+				{
+					"name": "Eg 1: Asigna una persona a un curso.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation addStudentToCurse($course: ID!, $person: ID!) {\n    addPersonToCourse(courseID: $course, personID: $person) {\n        _id\n        title\n    }\n}",
+								"variables": "{\n    \"course\": \"6150f5e2942ceb1b5ce811f9\",\n    \"person\": \"61526617c3540b0c2a3bab17\"\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "94"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"5e-CYz89M0ZT6mzRSsiPgj+yh+JHD8\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 03 Oct 2021 23:14:36 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"addPersonToCourse\": {\n            \"_id\": \"6150f5e2942ceb1b5ce811f9\",\n            \"title\": \"Curso de ejemplo 5\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "[Q] Consulta por texto.",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query filter($search: String!) {\n    searchItems(keyword: $search) {\n        __typename\n        ... on Course {\n            title\n            description\n            topic\n        }\n        ... on Student {\n            name\n            email\n            avatar\n        }\n        ... on Teacher {\n            name\n            email\n            phone\n        }\n    }\n}",
+						"variables": "{\n    \"search\": \"diseño\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "**Query** que busca un texto en cualquier campo de los que existen para estudiante y profesor, para esto:\n\n- Se crea un índice en MongoDB en cada colección (people y courses) para tomar en cuenta cada campo.\n- El campo **__typename** devuelve qué tipo de Custom Type es ese objeto (Course, Student o Teacher).\n- En el query se segmentan los campos de las respuestas según el Custom Type.\n- Para esta consulta debe coincidir la palabra completa, por lo cuál si se desea hacer por un fragmento de la palabra a buscar es preferible hacer consultas por campo de forma individual con un **$regex** (o expresión regular)."
+			},
+			"response": [
+				{
+					"name": "Eg 1: Consulta por texto.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query filter($search: String!) {\n    searchItems(keyword: $search) {\n        __typename\n        ... on Course {\n            title\n            description\n            topic\n        }\n        ... on Student {\n            name\n            email\n            avatar\n        }\n        ... on Teacher {\n            name\n            email\n            phone\n        }\n    }\n}",
+								"variables": "{\n    \"search\": \"diseño\"\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "122"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"7a-rDq1TYySOfPBtbfE+4GWlIREuBw\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 03 Oct 2021 23:45:58 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"searchItems\": [\n            {\n                \"__typename\": \"Course\",\n                \"title\": \"Mi titulo 4\",\n                \"description\": \"una descripcion\",\n                \"topic\": \"diseño\"\n            }\n        ]\n    }\n}"
+				},
+				{
+					"name": "Eg 2: Consulta por texto.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query filter($search: String!) {\n    searchItems(keyword: $search) {\n        __typename\n        ... on Course {\n            title\n            description\n            topic\n        }\n        ... on Student {\n            name\n            email\n            avatar\n        }\n        ... on Teacher {\n            name\n            email\n            phone\n        }\n    }\n}",
+								"variables": "{\n    \"search\": \"5\"\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "319"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"13f-EkRl8MfNAkK2SmCe2Tdfjl7UKB4\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 04 Oct 2021 00:00:21 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"searchItems\": [\n            {\n                \"__typename\": \"Course\",\n                \"title\": \"Curso de ejemplo 5\",\n                \"description\": \"Descripcion 5\",\n                \"topic\": \"cultura\"\n            },\n            {\n                \"__typename\": \"Student\",\n                \"name\": \"Carolina 5\",\n                \"email\": \"carito@ubosque.edu.co\",\n                \"avatar\": null\n            },\n            {\n                \"__typename\": \"Teacher\",\n                \"name\": \"Pedro 5\",\n                \"email\": \"pedroparamo@ucentral.edu.co\",\n                \"phone\": \"3469875261\"\n            }\n        ]\n    }\n}"
 				}
 			]
 		}

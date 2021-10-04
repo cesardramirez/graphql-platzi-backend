@@ -48,6 +48,7 @@ URLs de acceso:
 ## Postman
 > Se pueden ejecutar los servicios también a través de [**Postman**](https://www.postman.com/) por lo cuál se dejan a continuación la colección para su ejecución:
 - [Collection](https://github.com/cesardramirez/graphql-platzi/blob/main/docs/postman/Platzi%20-%20GraphQL.postman_collection.json)
+<br>![](/docs/postman/img/01_Postman_Docs_Endpoint.png)
 
 ### Queries
 
@@ -720,7 +721,7 @@ URLs de acceso:
     }
     aliasCourse1: course(id: "60983d5455d9b427067200bb") {
       ...courseFields
-      teacher
+      monitor
     }
     aliasCourse2: course(id: "60983d5455d9b427067200bb") {
       ...courseFields
