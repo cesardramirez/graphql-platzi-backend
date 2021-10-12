@@ -1,5 +1,5 @@
 # graphql-platzi
-Platzi - Curso Básico de GraphQL
+Platzi - Curso Básico de GraphQL (Backend)
 
 ### Listado de comandos
 
