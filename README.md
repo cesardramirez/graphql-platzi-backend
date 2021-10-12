@@ -44,6 +44,8 @@ URLs de acceso:
 `db.students.renameCollection("people", false)`  _Renombra la colección students por people._
 <br>`db.courses.updateMany({}, { $rename: { "teacher": "monitor" }})`  _Modifica todos los campos que se llaman teacher por monitor en el collection courses._
 <br>`db.<nombre_coleccion>.createIndex({"$**": "text"})`  _Se crea un índice llamado "text" para cada una de las colecciones (courses y people)._
+<br>`mongodump --uri mongodb+srv://<USER>:<PASSWORD>@<HOST>/<DATABASE>`  _Backup de la BD (terminal)._
+<br>`mongorestore --uri mongodb+srv://<USER>:<PASSWORD>@<HOST>`  _Restaurar la BD (terminal)._
 
 ## Postman
 > Se pueden ejecutar los servicios también a través de [**Postman**](https://www.postman.com/) por lo cuál se dejan a continuación la colección para su ejecución:
