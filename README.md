@@ -1,9 +1,13 @@
-# graphql-platzi
+# graphql-platzi-backend
 Platzi - Curso Básico de GraphQL (Backend)
+
+> Para visualizar el proyecto Frontend (que hace los llamados a GraphQL por medio de una interfaz web) dar clic [acá](https://github.com/cesardramirez/graphql-platzi-frontend).
 
 ### Listado de comandos
 
-`npm i -g npx`  _Instalar npx de manera global._
+`nvm install 12.14.0`  _Instalar una versión reciente del version manager para node.js_
+<br>`npm install -g npm`  _Actualizar la versión actual de npm (node package manager)._
+<br>`npm i -g npx`  _Instalar npx de manera global._
 <br>`npx gitignore node`  _Crea el archivo gitignore para proyectos node._
 <br>`npm init -y`  _Inicia el package.json en el proyecto._
 <br>`npm install`  _Generar la carpeta node_modules (necesario para ejecutar el proyecto)._
